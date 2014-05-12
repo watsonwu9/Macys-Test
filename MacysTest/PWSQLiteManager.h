@@ -30,7 +30,7 @@
  Schema of ProductDB.sql:
   
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
- @returns YES if the operation is successful.
+ @returns YES if INSERT is successful.
  */
 - (BOOL)add:(Product *)product;
 
@@ -40,7 +40,7 @@
  Schema of ProductDB.sql:
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
- @returns YES if the operation is successful.
+ @returns YES if DELETE is successful.
  */
 - (BOOL)remove:(Product *)product;
 
@@ -50,7 +50,7 @@
  Schema of ProductDB.sql:
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
- @returns YES if the operation is successful.
+ @returns YES if UPDATE is successful.
  */
 - (BOOL)update:(Product *)product;
 

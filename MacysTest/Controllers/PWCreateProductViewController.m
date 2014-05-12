@@ -52,7 +52,6 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -72,6 +71,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    // Keep the table view nice and clean.
     return 0.01f;
 }
 

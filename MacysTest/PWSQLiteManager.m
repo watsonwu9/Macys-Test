@@ -54,12 +54,25 @@
     }
 }
 
-//  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
 - (BOOL)add:(Product *)product {
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
     [database open];
-    BOOL success = [database executeUpdate:@"INSERT INTO products (name, description, regular_price, sale_price) VALUES (?, ?, ?, ?)", product.productName, product.productDescription, @(product.productRegularPrice), @(product.productSalePrice)];
+    
+    // Generate an id for the newly created product
+    NSInteger newProductId = [Product nextId];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filename = [NSString stringWithFormat:@"OriginalPhoto%d.png", newProductId];
+    NSString *photoPathName = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    BOOL success = [database executeUpdate:@"INSERT INTO products (id, name, description, regular_price, sale_price, product_photo) VALUES (?, ?, ?, ?, ?, ?)", @(newProductId), product.productName, product.productDescription, @(product.productRegularPrice), @(product.productSalePrice), photoPathName];
     [database close];
+    
+    // Save the product's related photo in the Documents directory
+    if (success) {
+        [self storeImage:product.productPhoto toPath:photoPathName];
+    }
+    
     return success;
 }
 
@@ -68,14 +81,26 @@
     [database open];
     BOOL success = [database executeUpdate:@"DELETE FROM products WHERE id=?", @(product.productId)];
     [database close];
+    
+    // Delete the product's related photo in the Documents directory
+    if (success) {
+        [self deleteImageAtPath:product.originalPhotoPath];
+    }
+    
     return success;
 }
 
 - (BOOL)update:(Product *)product {
+    
+    BOOL success;
+    // Update the product's related photo in the documents directory
+    if (success) {
+        //
+    }
+    
     return YES;
 }
 
-//  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
 - (NSMutableArray *)fetchedProducts {
     NSMutableArray *products = [[NSMutableArray alloc] init];
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
@@ -88,22 +113,24 @@
     return products;
 }
 
-- (void)storeImage:(UIImage *)image forProduct:(Product *)product {
-    // Save the image to DocumentsDirectory
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(queue, ^{
+- (void)storeImage:(UIImage *)image toPath:(NSString *)pathName {
+    // Save the image to the Documents Directory asynchronously.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *originalData = UIImagePNGRepresentation([image fixOrientation]);
 
         NSError *error3;
-        if (![originalData writeToFile:[product originalPhotoPath] options:NSDataWritingAtomic error:&error3]) {
+        if (![originalData writeToFile:pathName options:NSDataWritingAtomic error:&error3]) {
             NSLog(@"Error saving original photo: %@", error3);
         }
     });
 }
 
-- (void)deleteImageForProduct:(Product *)product {
-    
+- (void)deleteImageAtPath:(NSString *)pathName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    if (![fileManager removeItemAtPath:pathName error:&error]) {
+        NSLog(@"Error deleting original photo: %@", [error userInfo]);
+    }
 }
 
 @end

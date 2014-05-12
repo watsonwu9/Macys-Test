@@ -19,8 +19,27 @@
 @property (nonatomic) NSArray *productColors;
 @property (nonatomic) NSDictionary *productStores;
 
-- (id)initWithId:(NSInteger)id andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
+/**
+ @params productId the id for the product.
+ @params productName the name for the product.
+ @params productDescription the description for the product.
+ @params productRegularPrice the regular price for the product.
+ @params productSalePrice the sale price for the product.
+ @params productPhoto the related photo for the product.
+ @params productColors the available colors for the product.
+ @params productStores the availbale stores for the product.
+ @returns an instance of the Product class.
+ */
+- (id)initWithId:(NSInteger)productId andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
 
+/**
+ @returns the related photo path for the product.
+ */
 - (NSString *)originalPhotoPath;
+
+/**
+ @returns the next available id for the product to be created.
+ */
++ (NSInteger)nextId;
 
 @end

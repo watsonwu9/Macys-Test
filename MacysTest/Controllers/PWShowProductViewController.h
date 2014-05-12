@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PWSQLiteManager.h"
+#import "PWProductDetailViewController.h"
 
 @interface PWShowProductViewController : UITableViewController
 

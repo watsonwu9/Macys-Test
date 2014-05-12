@@ -25,17 +25,16 @@
     return self;
 }
 
-- (NSString *)documentsDirectory
-{
+- (NSString *)documentsDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
 
-- (NSString *)originalPhotoPath
-{
+- (NSString *)originalPhotoPath {
     if (self.productId < 0) {
-        // Mock products' Id is negative, for example, -1, -2 and -3
+        // Mock products' Ids are negative, for example, -1, -2 and -3
+        // "MockProductPhoto1.png", "MockProductPhoto2.png" and so on...
         return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
     }
     else {
@@ -44,20 +43,20 @@
     }
 }
 
-- (UIImage *)originalPhotoImage
-{
+- (UIImage *)originalPhotoImage {
     return [UIImage imageWithContentsOfFile:[self originalPhotoPath]];
 }
 
-- (NSString *)thumbPhotoPath
-{
-    NSString *filename = [NSString stringWithFormat:@"ThumbPhoto%d.png", self.productId];
-    return [[self documentsDirectory] stringByAppendingPathComponent:filename];
-}
-
-- (UIImage *)thumbPhotoImage
-{
-    return [UIImage imageWithContentsOfFile:[self thumbPhotoPath]];
++ (NSInteger)nextId {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger nextProductId = [userDefaults integerForKey:@"NextId"];
+    if (nextProductId == 0) {
+        // Id should start from 1, not 0, according to SQLite convention.
+        nextProductId = 1;
+    }
+    [userDefaults setInteger:nextProductId+1 forKey:@"NextId"];
+    [userDefaults synchronize];
+    return nextProductId;
 }
 
 @end
