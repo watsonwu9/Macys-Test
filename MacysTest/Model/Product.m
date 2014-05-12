@@ -34,8 +34,14 @@
 
 - (NSString *)originalPhotoPath
 {
-    NSString *filename = [NSString stringWithFormat:@"OriginalPhoto-%d.png", self.productId];
-    return [[self documentsDirectory] stringByAppendingPathComponent:filename];
+    if (self.productId < 0) {
+        // Mock products' Id is negative, for example, -1, -2 and -3
+        return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
+    }
+    else {
+        NSString *filename = [NSString stringWithFormat:@"OriginalPhoto%d.png", self.productId];
+        return [[self documentsDirectory] stringByAppendingPathComponent:filename];
+    }
 }
 
 - (UIImage *)originalPhotoImage
@@ -45,7 +51,7 @@
 
 - (NSString *)thumbPhotoPath
 {
-    NSString *filename = [NSString stringWithFormat:@"ThumbPhoto-%d.png", self.productId];
+    NSString *filename = [NSString stringWithFormat:@"ThumbPhoto%d.png", self.productId];
     return [[self documentsDirectory] stringByAppendingPathComponent:filename];
 }
 

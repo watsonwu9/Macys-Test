@@ -7,17 +7,60 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Product.h"
+#import "UIImage+Tools.h"
+#import <sqlite3.h>
+#import "FMDatabase.h"
 
 @interface PWSQLiteManager : NSObject
 
 /**
- @returns a singleton instance of PWSQLiteManager
+ @returns a singleton instance of PWSQLiteManager.
  */
 + (id)sharedInstance;
 
 /**
-Check if the SQL database has already been saved to the user's phone (if not, then copy it over)
+ Check if the SQL database has already been saved to the user's phone (if not, then copy it over).
  */
 - (void)checkAndCreateDatabase;
+
+/**
+ INSERT a row into the products table.
+ 
+ Schema of ProductDB.sql:
+  
+ CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ @returns YES if the operation is successful.
+ */
+- (BOOL)add:(Product *)product;
+
+/**
+ DELETE a row from the products table.
+ 
+ Schema of ProductDB.sql:
+ 
+ CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ @returns YES if the operation is successful.
+ */
+- (BOOL)remove:(Product *)product;
+
+/**
+ UPDATE a row in the products table.
+ 
+ Schema of ProductDB.sql:
+ 
+ CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ @returns YES if the operation is successful.
+ */
+- (BOOL)update:(Product *)product;
+
+/**
+ SELECT * from the products table.
+ 
+ Schema of ProductDB.sql:
+ 
+ CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ */
+- (NSMutableArray *)fetchedProducts;
 
 @end

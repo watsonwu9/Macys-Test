@@ -20,77 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[PWSQLiteManager sharedInstance] checkAndCreateDatabase];
-    
+        
     return YES;
 }
-
-/*
-- (void)store:(UIImage *)image
-{
-    // store image link as the content of a new comment and store image as a file in the classic image storing folder
-    
-    Comment *comment = nil;
-    comment = [NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:self.managedObjectContext];
-    
-    comment.commentId = [NSNumber numberWithInt:[AppStat nextItemId]];
-    
-    comment.content = [comment photoPath];
-    
-    NSDate *date = [NSDate date];
-    comment.date = date;
-    
-    comment.isPhoto = [NSNumber numberWithBool:YES];
-    self.itemToEdit.lastCommentAsPhotoId = comment.commentId;
-    self.itemToEdit.updateDate = date;
-    self.itemToEdit.organizeDateStr = [self.itemToEdit.updateDate getDateStringMonthCommaYear];
-    
-    [comment setValue:self.itemToEdit forKey:@"belongToPrayer"];
-    
-    // save the special "photo"-type comment into Core Data!
-    [self saveToDB];
-    
-    // save the image to DocumentsDirectory (two copies, resized and original)
-    
-    UIImage *resizedImage;
-    if (image.size.width >= 280) {
-        resizedImage = [image resizedImage:CGSizeMake(280, 280 * image.size.height / image.size.width)];
-    } else {
-        resizedImage = [image resizedImage:CGSizeMake(image.size.width, image.size.height)];
-    }
-    
-    NSData *resizedData = UIImagePNGRepresentation(resizedImage);
-    NSError *error1;
-    if (![resizedData writeToFile:[comment photoPath] options:NSDataWritingAtomic error:&error1]) {
-        NSLog(@"Error saving resized photo: %@", error1);
-    }
-    
-    // save the thumb image :) don't block the main thread...  :)
-    UIImage *thumbImage = [[[resizedImage fixOrientation] squareCroppedImage] resizedImage:CGSizeMake(100, 100)];
-    NSData *thumbData = UIImagePNGRepresentation(thumbImage);
-    NSError *error2;
-    if (![thumbData writeToFile:[comment thumbPhotoPath] options:NSDataWritingAtomic error:&error2]) {
-        NSLog(@"Error saving thumb photo: %@", error2);
-    }
-    
-    // make the storage of original image asynchronous!
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        
-        // this original one can be large, should be processed asynchronously...
-        NSData *originalData = UIImagePNGRepresentation([image fixOrientation]);
-        // fix the orientation of UIImage before saving   :)
-        // works like charm!
-        
-        NSError *error3;
-        if (![originalData writeToFile:[comment originalPhotoPath] options:NSDataWritingAtomic error:&error3]) {
-            NSLog(@"Error saving original photo: %@", error3);
-        }
-        
-    });
-    
-}
- 
- */
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

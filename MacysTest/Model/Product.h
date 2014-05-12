@@ -19,4 +19,8 @@
 @property (nonatomic) NSArray *productColors;
 @property (nonatomic) NSDictionary *productStores;
 
+- (id)initWithId:(NSInteger)id andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
+
+- (NSString *)originalPhotoPath;
+
 @end

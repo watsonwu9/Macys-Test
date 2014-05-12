@@ -14,7 +14,7 @@
 		D405CCD4191FD0D30059E052 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCD3191FD0D30059E052 /* main.m */; };
 		D405CCD8191FD0D30059E052 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCD7191FD0D30059E052 /* PWAppDelegate.m */; };
 		D405CCDB191FD0D30059E052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D405CCD9191FD0D30059E052 /* Main.storyboard */; };
-		D405CCDE191FD0D30059E052 /* PWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCDD191FD0D30059E052 /* PWViewController.m */; };
+		D405CCDE191FD0D30059E052 /* PWHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCDD191FD0D30059E052 /* PWHomeViewController.m */; };
 		D405CCE0191FD0D40059E052 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D405CCDF191FD0D40059E052 /* Images.xcassets */; };
 		D405CCE7191FD0D40059E052 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D405CCE6191FD0D40059E052 /* XCTest.framework */; };
 		D405CCE8191FD0D40059E052 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D405CCC7191FD0D30059E052 /* Foundation.framework */; };
@@ -25,6 +25,19 @@
 		D405CD00191FDE080059E052 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D405CCFF191FDE080059E052 /* libsqlite3.0.dylib */; };
 		D405CD04191FE1320059E052 /* ProductDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = D405CD03191FE1320059E052 /* ProductDB.sql */; };
 		D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CD07191FE94D0059E052 /* PWSQLiteManager.m */; };
+		D467E52719204E5700C32058 /* PWCreateProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467E52519204E5700C32058 /* PWCreateProductViewController.m */; };
+		D467E52819204E5700C32058 /* PWCreateProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52619204E5700C32058 /* PWCreateProductViewController.xib */; };
+		D467E52B192055A100C32058 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52A192055A100C32058 /* ProductCell.xib */; };
+		D467E52F1920700600C32058 /* PWShowProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467E52D1920700600C32058 /* PWShowProductViewController.m */; };
+		D467E5301920700600C32058 /* PWShowProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52E1920700600C32058 /* PWShowProductViewController.xib */; };
+		D467E5321920747800C32058 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = D467E5311920747800C32058 /* MockData.json */; };
+		D4B3255F192091BC00F9F79D /* UIImage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3255E192091BC00F9F79D /* UIImage+Tools.m */; };
+		D4B32567192097A000F9F79D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B32562192097A000F9F79D /* FMDatabase.m */; };
+		D4B32568192097A000F9F79D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B32564192097A000F9F79D /* FMDatabaseAdditions.m */; };
+		D4B32569192097A000F9F79D /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B32566192097A000F9F79D /* FMResultSet.m */; };
+		D4B3257019209A4C00F9F79D /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3256C19209A4C00F9F79D /* FMDatabasePool.m */; };
+		D4B3257119209A4C00F9F79D /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3256E19209A4C00F9F79D /* FMDatabaseQueue.m */; };
+		D4B3257419209D5500F9F79D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3257319209D5500F9F79D /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +62,8 @@
 		D405CCD6191FD0D30059E052 /* PWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAppDelegate.h; sourceTree = "<group>"; };
 		D405CCD7191FD0D30059E052 /* PWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWAppDelegate.m; sourceTree = "<group>"; };
 		D405CCDA191FD0D30059E052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D405CCDC191FD0D30059E052 /* PWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWViewController.h; sourceTree = "<group>"; };
-		D405CCDD191FD0D30059E052 /* PWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWViewController.m; sourceTree = "<group>"; };
+		D405CCDC191FD0D30059E052 /* PWHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWHomeViewController.h; sourceTree = "<group>"; };
+		D405CCDD191FD0D30059E052 /* PWHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PWHomeViewController.m; sourceTree = "<group>"; };
 		D405CCDF191FD0D40059E052 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D405CCE5191FD0D40059E052 /* MacysTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacysTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D405CCE6191FD0D40059E052 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +76,29 @@
 		D405CD03191FE1320059E052 /* ProductDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProductDB.sql; sourceTree = "<group>"; };
 		D405CD06191FE94D0059E052 /* PWSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSQLiteManager.h; sourceTree = "<group>"; };
 		D405CD07191FE94D0059E052 /* PWSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSQLiteManager.m; sourceTree = "<group>"; };
+		D467E52419204E5700C32058 /* PWCreateProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWCreateProductViewController.h; path = Controllers/PWCreateProductViewController.h; sourceTree = "<group>"; };
+		D467E52519204E5700C32058 /* PWCreateProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWCreateProductViewController.m; path = Controllers/PWCreateProductViewController.m; sourceTree = "<group>"; };
+		D467E52619204E5700C32058 /* PWCreateProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWCreateProductViewController.xib; path = Controllers/PWCreateProductViewController.xib; sourceTree = "<group>"; };
+		D467E52A192055A100C32058 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		D467E52C1920700600C32058 /* PWShowProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWShowProductViewController.h; path = Controllers/PWShowProductViewController.h; sourceTree = "<group>"; };
+		D467E52D1920700600C32058 /* PWShowProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWShowProductViewController.m; path = Controllers/PWShowProductViewController.m; sourceTree = "<group>"; };
+		D467E52E1920700600C32058 /* PWShowProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWShowProductViewController.xib; path = Controllers/PWShowProductViewController.xib; sourceTree = "<group>"; };
+		D467E5311920747800C32058 /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		D4B3255D192091BC00F9F79D /* UIImage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tools.h"; sourceTree = "<group>"; };
+		D4B3255E192091BC00F9F79D /* UIImage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tools.m"; sourceTree = "<group>"; };
+		D4B32561192097A000F9F79D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		D4B32562192097A000F9F79D /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		D4B32563192097A000F9F79D /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		D4B32564192097A000F9F79D /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		D4B32565192097A000F9F79D /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		D4B32566192097A000F9F79D /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		D4B3256B19209A4C00F9F79D /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		D4B3256C19209A4C00F9F79D /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		D4B3256D19209A4C00F9F79D /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		D4B3256E19209A4C00F9F79D /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		D4B3256F19209A4C00F9F79D /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		D4B3257219209D5500F9F79D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D4B3257319209D5500F9F79D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,15 +160,21 @@
 		D405CCCD191FD0D30059E052 /* MacysTest */ = {
 			isa = PBXGroup;
 			children = (
-				D405CD05191FE13B0059E052 /* Database */,
+				D4B3256A192097A600F9F79D /* FMDB */,
 				D405CD01191FE0D20059E052 /* Model */,
+				D405CD05191FE13B0059E052 /* Database */,
+				D4B32560192091C100F9F79D /* Categories */,
+				D4B3257519209D5A00F9F79D /* MBProgressHUD */,
 				D405CCD6191FD0D30059E052 /* PWAppDelegate.h */,
 				D405CCD7191FD0D30059E052 /* PWAppDelegate.m */,
 				D405CCD9191FD0D30059E052 /* Main.storyboard */,
-				D405CCDC191FD0D30059E052 /* PWViewController.h */,
-				D405CCDD191FD0D30059E052 /* PWViewController.m */,
+				D405CCDC191FD0D30059E052 /* PWHomeViewController.h */,
+				D405CCDD191FD0D30059E052 /* PWHomeViewController.m */,
+				D467E52919204E5B00C32058 /* Controllers */,
 				D405CD06191FE94D0059E052 /* PWSQLiteManager.h */,
 				D405CD07191FE94D0059E052 /* PWSQLiteManager.m */,
+				D467E52A192055A100C32058 /* ProductCell.xib */,
+				D467E5311920747800C32058 /* MockData.json */,
 				D405CCDF191FD0D40059E052 /* Images.xcassets */,
 				D405CCCE191FD0D30059E052 /* Supporting Files */,
 			);
@@ -183,6 +225,55 @@
 				D405CD03191FE1320059E052 /* ProductDB.sql */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		D467E52919204E5B00C32058 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D467E52419204E5700C32058 /* PWCreateProductViewController.h */,
+				D467E52519204E5700C32058 /* PWCreateProductViewController.m */,
+				D467E52619204E5700C32058 /* PWCreateProductViewController.xib */,
+				D467E52C1920700600C32058 /* PWShowProductViewController.h */,
+				D467E52D1920700600C32058 /* PWShowProductViewController.m */,
+				D467E52E1920700600C32058 /* PWShowProductViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D4B32560192091C100F9F79D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D4B3255D192091BC00F9F79D /* UIImage+Tools.h */,
+				D4B3255E192091BC00F9F79D /* UIImage+Tools.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		D4B3256A192097A600F9F79D /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				D4B32561192097A000F9F79D /* FMDatabase.h */,
+				D4B32562192097A000F9F79D /* FMDatabase.m */,
+				D4B32563192097A000F9F79D /* FMDatabaseAdditions.h */,
+				D4B32564192097A000F9F79D /* FMDatabaseAdditions.m */,
+				D4B32565192097A000F9F79D /* FMResultSet.h */,
+				D4B32566192097A000F9F79D /* FMResultSet.m */,
+				D4B3256B19209A4C00F9F79D /* FMDatabasePool.h */,
+				D4B3256C19209A4C00F9F79D /* FMDatabasePool.m */,
+				D4B3256D19209A4C00F9F79D /* FMDatabaseQueue.h */,
+				D4B3256E19209A4C00F9F79D /* FMDatabaseQueue.m */,
+				D4B3256F19209A4C00F9F79D /* FMDB.h */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		D4B3257519209D5A00F9F79D /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D4B3257219209D5500F9F79D /* MBProgressHUD.h */,
+				D4B3257319209D5500F9F79D /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +353,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D467E5301920700600C32058 /* PWShowProductViewController.xib in Resources */,
+				D467E5321920747800C32058 /* MockData.json in Resources */,
 				D405CCE0191FD0D40059E052 /* Images.xcassets in Resources */,
+				D467E52819204E5700C32058 /* PWCreateProductViewController.xib in Resources */,
+				D467E52B192055A100C32058 /* ProductCell.xib in Resources */,
 				D405CCD2191FD0D30059E052 /* InfoPlist.strings in Resources */,
 				D405CD04191FE1320059E052 /* ProductDB.sql in Resources */,
 				D405CCDB191FD0D30059E052 /* Main.storyboard in Resources */,
@@ -284,11 +379,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D405CCDE191FD0D30059E052 /* PWViewController.m in Sources */,
+				D467E52F1920700600C32058 /* PWShowProductViewController.m in Sources */,
+				D4B3257019209A4C00F9F79D /* FMDatabasePool.m in Sources */,
+				D4B3255F192091BC00F9F79D /* UIImage+Tools.m in Sources */,
+				D405CCDE191FD0D30059E052 /* PWHomeViewController.m in Sources */,
+				D4B3257119209A4C00F9F79D /* FMDatabaseQueue.m in Sources */,
+				D4B32567192097A000F9F79D /* FMDatabase.m in Sources */,
 				D405CCFE191FD2080059E052 /* Product.m in Sources */,
 				D405CCD4191FD0D30059E052 /* main.m in Sources */,
 				D405CCD8191FD0D30059E052 /* PWAppDelegate.m in Sources */,
 				D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */,
+				D4B32569192097A000F9F79D /* FMResultSet.m in Sources */,
+				D467E52719204E5700C32058 /* PWCreateProductViewController.m in Sources */,
+				D4B32568192097A000F9F79D /* FMDatabaseAdditions.m in Sources */,
+				D4B3257419209D5500F9F79D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +599,7 @@
 				D405CCF8191FD0D40059E052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D405CCF9191FD0D40059E052 /* Build configuration list for PBXNativeTarget "MacysTestTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +608,7 @@
 				D405CCFB191FD0D40059E052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
