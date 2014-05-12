@@ -27,6 +27,7 @@
 		D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CD07191FE94D0059E052 /* PWSQLiteManager.m */; };
 		D41243CD1921143500495D77 /* PWProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243CB1921143500495D77 /* PWProductDetailViewController.m */; };
 		D41243CE1921143500495D77 /* PWProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41243CC1921143500495D77 /* PWProductDetailViewController.xib */; };
+		D41243D1192118B000495D77 /* PWPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243D0192118B000495D77 /* PWPhotoManager.m */; };
 		D467E52719204E5700C32058 /* PWCreateProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467E52519204E5700C32058 /* PWCreateProductViewController.m */; };
 		D467E52819204E5700C32058 /* PWCreateProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52619204E5700C32058 /* PWCreateProductViewController.xib */; };
 		D467E52B192055A100C32058 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52A192055A100C32058 /* ProductCell.xib */; };
@@ -81,6 +82,8 @@
 		D41243CA1921143500495D77 /* PWProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWProductDetailViewController.h; path = Controllers/PWProductDetailViewController.h; sourceTree = "<group>"; };
 		D41243CB1921143500495D77 /* PWProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWProductDetailViewController.m; path = Controllers/PWProductDetailViewController.m; sourceTree = "<group>"; };
 		D41243CC1921143500495D77 /* PWProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWProductDetailViewController.xib; path = Controllers/PWProductDetailViewController.xib; sourceTree = "<group>"; };
+		D41243CF192118B000495D77 /* PWPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotoManager.h; sourceTree = "<group>"; };
+		D41243D0192118B000495D77 /* PWPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotoManager.m; sourceTree = "<group>"; };
 		D467E52419204E5700C32058 /* PWCreateProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWCreateProductViewController.h; path = Controllers/PWCreateProductViewController.h; sourceTree = "<group>"; };
 		D467E52519204E5700C32058 /* PWCreateProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWCreateProductViewController.m; path = Controllers/PWCreateProductViewController.m; sourceTree = "<group>"; };
 		D467E52619204E5700C32058 /* PWCreateProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWCreateProductViewController.xib; path = Controllers/PWCreateProductViewController.xib; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				D467E52919204E5B00C32058 /* Controllers */,
 				D405CD06191FE94D0059E052 /* PWSQLiteManager.h */,
 				D405CD07191FE94D0059E052 /* PWSQLiteManager.m */,
+				D41243CF192118B000495D77 /* PWPhotoManager.h */,
+				D41243D0192118B000495D77 /* PWPhotoManager.m */,
 				D467E52A192055A100C32058 /* ProductCell.xib */,
 				D467E5311920747800C32058 /* MockData.json */,
 				D405CCDF191FD0D40059E052 /* Images.xcassets */,
@@ -395,6 +400,7 @@
 				D4B3257119209A4C00F9F79D /* FMDatabaseQueue.m in Sources */,
 				D4B32567192097A000F9F79D /* FMDatabase.m in Sources */,
 				D405CCFE191FD2080059E052 /* Product.m in Sources */,
+				D41243D1192118B000495D77 /* PWPhotoManager.m in Sources */,
 				D405CCD4191FD0D30059E052 /* main.m in Sources */,
 				D405CCD8191FD0D30059E052 /* PWAppDelegate.m in Sources */,
 				D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */,

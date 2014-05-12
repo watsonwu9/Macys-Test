@@ -70,7 +70,9 @@
     
     // Save the product's related photo in the Documents directory
     if (success) {
-        [self storeImage:product.productPhoto toPath:photoPathName];
+        if (![[PWPhotoManager sharedInstance] saveImage:product.productPhoto toPath:photoPathName]) {
+            NSLog(@"Error saving the photo of the product.");
+        }
     }
     
     return success;
@@ -84,7 +86,10 @@
     
     // Delete the product's related photo in the Documents directory
     if (success) {
-        [self deleteImageAtPath:product.originalPhotoPath];
+        // [self deleteImageAtPath:product.originalPhotoPath];
+        if (![[PWPhotoManager sharedInstance] deleteImageAtPath:product.originalPhotoPath]) {
+            NSLog(@"Error deleting the photo of the product.");
+        }
     }
     
     return success;
@@ -112,25 +117,5 @@
     }
     return products;
 }
-
-- (void)storeImage:(UIImage *)image toPath:(NSString *)pathName {
-    // Save the image to the Documents Directory asynchronously.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *originalData = UIImagePNGRepresentation([image fixOrientation]);
-
-        NSError *error3;
-        if (![originalData writeToFile:pathName options:NSDataWritingAtomic error:&error3]) {
-            NSLog(@"Error saving original photo: %@", error3);
-        }
-    });
-}
-
-- (void)deleteImageAtPath:(NSString *)pathName {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error;
-    if (![fileManager removeItemAtPath:pathName error:&error]) {
-        NSLog(@"Error deleting original photo: %@", [error userInfo]);
-    }
-}
-
+ 
 @end

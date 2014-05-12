@@ -11,6 +11,7 @@
 #import "UIImage+Tools.h"
 #import <sqlite3.h>
 #import "FMDatabase.h"
+#import "PWPhotoManager.h"
 
 @interface PWSQLiteManager : NSObject
 
