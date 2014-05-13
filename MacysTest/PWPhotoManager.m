@@ -20,21 +20,14 @@
     return sharedInstance;
 }
 
-- (BOOL)saveImage:(UIImage *)image toPath:(NSString *)pathName {
+- (void)saveImage:(UIImage *)image toPath:(NSString *)pathName {
     // Save the image to the Documents Directory asynchronously.
-    __block BOOL success;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
-        
-        NSError *error;
-        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
-            NSLog(@"Error saving the photo: %@", error);
-        }
-        else {
-            success = YES;
-        }
-    });
-    return success;
+    NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
+    
+    NSError *error;
+    if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
+        NSLog(@"Error saving the photo: %@", error);
+    }
 }
 
 - (BOOL)deleteImageAtPath:(NSString *)pathName {
@@ -50,21 +43,13 @@
     return success;
 }
 
-- (BOOL)updateImage:(UIImage *)image atPath:(NSString *)pathName {
-    // Update the image at the desired path asynchronously.
-    __block BOOL success;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
-        
-        NSError *error;
-        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
-            NSLog(@"Error updating the photo: %@", error);
-        }
-        else {
-            success = YES;
-        }
-    });
-    return success;
+- (void)updateImage:(UIImage *)image atPath:(NSString *)pathName {
+    NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
+    
+    NSError *error;
+    if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
+        NSLog(@"Error updating the photo: %@", error);
+    }
 }
 
 @end

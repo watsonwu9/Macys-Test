@@ -8,8 +8,6 @@
 
 #import "PWUpdateProductViewController.h"
 
-static const CGFloat PWUpdateProductHUDDuration = 0.6f;
-
 @interface PWUpdateProductViewController ()
 
 @property (nonatomic) UIImagePickerController *imagePicker;
@@ -73,23 +71,20 @@ static const CGFloat PWUpdateProductHUDDuration = 0.6f;
     self.product.productDescription = [self.textViewProductDescription.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     // self.product.productStores = ...
     
-    // UPDATE this product in the products table.
-    if ([[PWSQLiteManager sharedInstance] update:self.product]) {
-        // Display "Updated!" HUD.
-        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
-        HUD.mode = MBProgressHUDModeCustomView;
-        HUD.labelText = @"Updated!";
-        [HUD show:YES];
-        [HUD hide:YES afterDelay:PWUpdateProductHUDDuration];
-        
-        // Close the screen right away when the HUD disappears.
-        [self performSelector:@selector(popToHomeScreen) withObject:self afterDelay:PWUpdateProductHUDDuration];
-    }
-    else {
-        NSLog(@"Failed to update the product.");
-    }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Updating...";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // UPDATE this product in the products table.
+        if (![[PWSQLiteManager sharedInstance] update:self.product]) {
+            NSLog(@"Failed to update the product.");
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES];
+            [self popToHomeScreen];
+        });
+    });
 }
 
 - (void)popToHomeScreen {

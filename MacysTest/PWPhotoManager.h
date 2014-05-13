@@ -19,9 +19,8 @@
 /**
  @params image the image to be saved.
  @params pathName the path for the image to be saved.
- @returns YES if the image is successfully saved.
  */
-- (BOOL)saveImage:(UIImage *)image toPath:(NSString *)pathName;
+- (void)saveImage:(UIImage *)image toPath:(NSString *)pathName;
 
 /**
  @params pathName the path of the photo to be deleted.
@@ -31,9 +30,8 @@
 
 /**
  @params image the image to be updated.
- @params pathName the path for the image to be updated.
- @returns YES if the image is successfully updated.
+ @params pathName the path of the image to be updated.
  */
-- (BOOL)updateImage:(UIImage *)image atPath:(NSString *)pathName;
+- (void)updateImage:(UIImage *)image atPath:(NSString *)pathName;
 
 @end
