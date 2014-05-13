@@ -13,6 +13,9 @@
 
 @interface PWUpdateProductViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
+/**
+ the product whose details are to be updated.
+ */
 @property (nonatomic) Product *product;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewProductPhoto;

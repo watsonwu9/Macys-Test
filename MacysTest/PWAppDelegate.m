@@ -8,13 +8,6 @@
 
 #import "PWAppDelegate.h"
 
-@interface PWAppDelegate()
-
-@property (nonatomic) NSString *databaseName;
-@property (nonatomic) NSString *databasePath;
-
-@end
-
 @implementation PWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

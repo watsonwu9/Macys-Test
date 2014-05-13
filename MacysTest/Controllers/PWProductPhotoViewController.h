@@ -11,6 +11,9 @@
 
 @interface PWProductPhotoViewController : UIViewController
 
+/**
+ the product whose photo will be shown.
+ */
 @property (nonatomic) Product *product;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewProductPhoto;

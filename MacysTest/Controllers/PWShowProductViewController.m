@@ -15,11 +15,16 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
 
 @interface PWShowProductViewController ()
 
+/**
+ the list of products.
+ */
 @property (nonatomic) NSMutableArray *products;
 
 @end
 
 @implementation PWShowProductViewController
+
+#pragma mark - View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -42,24 +47,12 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TableViewCellProduct"];
 }
 
-- (void)updateProductsAndTableView {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Load "products" on background thread.
-        self.products = [[PWSQLiteManager sharedInstance] fetchedProducts];
-        
-        // Update tableview on main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    });
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -121,13 +114,27 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
     }
 }
 
-#pragma mark - Table view delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PWProductDetailViewController *productDetailViewController = [[PWProductDetailViewController alloc] initWithNibName:@"PWProductDetailViewController" bundle:nil];
     productDetailViewController.product = [self.products objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:productDetailViewController animated:YES];
+}
+
+#pragma mark - Utilities
+
+- (void)updateProductsAndTableView {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Load "products" on background thread.
+        self.products = [[PWSQLiteManager sharedInstance] fetchedProducts];
+        
+        // Update tableview on main thread.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
 }
 
 @end

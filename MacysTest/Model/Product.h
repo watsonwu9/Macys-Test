@@ -10,13 +10,44 @@
 
 @interface Product : NSObject
 
+/**
+ the id of the product.
+ */
 @property (nonatomic) NSInteger productId;
+
+/**
+ the name of the product.
+ */
 @property (nonatomic) NSString *productName;
+
+/**
+ the description of the product.
+ */
 @property (nonatomic) NSString *productDescription;
+
+/**
+ the regular price of the product.
+ */
 @property (nonatomic) CGFloat productRegularPrice;
+
+/**
+ the sale price of the product.
+ */
 @property (nonatomic) CGFloat productSalePrice;
+
+/**
+ the photo of the product.
+ */
 @property (nonatomic) UIImage *productPhoto;
+
+/**
+ the colors of the product.
+ */
 @property (nonatomic) NSArray *productColors;
+
+/**
+ the stores of the product.
+ */
 @property (nonatomic) NSDictionary *productStores;
 
 /**
@@ -36,6 +67,11 @@
  @returns the related photo path for the product.
  */
 - (NSString *)photoPath;
+
+/**
+ @returns the related thumbnail photo path for the product.
+ */
+- (NSString *)thumbnailPhotoPath;
 
 /**
  @returns the next available id for the product to be created.

@@ -76,13 +76,7 @@
     
     // Save the product's related photo in the Documents directory
     if (success) {
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            [[PWPhotoManager sharedInstance] saveImage:product.productPhoto toPath:photoPathName];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Do nothing here.
-            });
-        });
+        [[PWPhotoManager sharedInstance] saveImage:product.productPhoto toPath:photoPathName];
     }
     
     return success;

@@ -8,11 +8,9 @@
 
 #import "PWHomeViewController.h"
 
-@interface PWHomeViewController ()
-
-@end
-
 @implementation PWHomeViewController
+
+#pragma mark - View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -35,6 +33,8 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - IB Actions
 
 - (IBAction)createProduct:(id)sender {
     PWCreateProductViewController *viewControllerCreateProduct = [[PWCreateProductViewController alloc] initWithNibName:@"PWCreateProductViewController" bundle:nil];

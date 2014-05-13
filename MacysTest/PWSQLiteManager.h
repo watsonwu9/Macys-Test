@@ -32,6 +32,7 @@
  Schema of the products table in MacysDB.sql:
   
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ 
  @returns YES if INSERT is successful.
  */
 - (BOOL)add:(Product *)product;
@@ -42,6 +43,7 @@
  Schema of the products table in MacysDB.sql:
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ 
  @returns YES if DELETE is successful.
  */
 - (BOOL)remove:(Product *)product;
@@ -52,6 +54,7 @@
  Schema of the products table in MacysDB.sql:
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ 
  @returns YES if UPDATE is successful.
  */
 - (BOOL)update:(Product *)product;
@@ -62,16 +65,18 @@
  Schema of the products table in MacysDB.sql:
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ 
  @returns all the stored products.
  */
 - (NSMutableArray *)fetchedProducts;
 
 /**
- SELECT * from the products table.
+ SELECT * from the stores table.
  
- Schema of the products table in MacysDB.sql:
+ Schema of the stores table in MacysDB.sql:
  
- CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
+ CREATE TABLE stores ( id INTEGER PRIMARY KEY, name TEXT)
+ 
  @params storeIds the set of store ids.
  @returns the corresponding set of stores.
  */

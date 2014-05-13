@@ -10,7 +10,14 @@
 
 @interface Store : NSObject
 
+/**
+ the id of the store.
+ */
 @property (nonatomic) NSInteger storeId;
+
+/**
+ the name of the store.
+ */
 @property (nonatomic) NSString *storeName;
 
 /**

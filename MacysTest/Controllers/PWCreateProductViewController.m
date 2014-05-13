@@ -17,11 +17,16 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
 
 @interface PWCreateProductViewController ()
 
+/**
+ the list of mock products.
+ */
 @property (nonatomic) NSMutableArray *mockProducts;
 
 @end
 
 @implementation PWCreateProductViewController
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +60,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -104,29 +109,37 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // INSERT a row into the products table (create the product).
     Product *product = [self.mockProducts objectAtIndex:indexPath.row];
-    if ([[PWSQLiteManager sharedInstance] add:product]) {
-        // Display "Created!" HUD.
-        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
-        HUD.mode = MBProgressHUDModeCustomView;
-        HUD.labelText = @"Created!";
-        [HUD show:YES];
-        [HUD hide:YES afterDelay:PWCreateProductHUDDuration];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Load "products" on background thread.
+        if (![[PWSQLiteManager sharedInstance] add:product]) {
+            // Failed to create the product.
+            NSLog(@"Failed to create the product.");
+        }
         
-        // Close the screen right away when the HUD disappears.
-        [self performSelector:@selector(closeScreen) withObject:self afterDelay:PWCreateProductHUDDuration];
-    }
-    else {
-        // Failed to create the product.
-        NSLog(@"Failed to create the product.");
-    }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Display "Created!" HUD.
+            MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+            [self.navigationController.view addSubview:HUD];
+            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.labelText = @"Created!";
+            [HUD show:YES];
+            [HUD hide:YES afterDelay:PWCreateProductHUDDuration];
+            
+            // Close the screen right away when the HUD disappears.
+            [self performSelector:@selector(closeScreen) withObject:self afterDelay:PWCreateProductHUDDuration];
+        });
+    });
 }
+
+#pragma mark - Utilities
 
 - (void)loadMockJsonData {
     NSString *jsonDataPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MockData.json"];
@@ -152,6 +165,8 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
         }
     }
 }
+
+#pragma mark - Private Methods
 
 - (void)cancel {
     [self closeScreen];

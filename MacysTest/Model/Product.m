@@ -25,38 +25,61 @@
     return self;
 }
 
+#pragma mark - Utilities
+
 - (NSString *)documentsDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
 
+#pragma mark - Public Methods
+
 - (NSString *)photoPath {
-    if (self.productId < 0) {
-        // Mock products' Ids are negative, for example, -1, -2 and -3
-        // "MockProductPhoto-1.png", "MockProductPhoto-2.png" and so on...
-        return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
-    }
-    else {
-        NSString *filename = [NSString stringWithFormat:@"Photo%d.png", self.productId];
-        return [[self documentsDirectory] stringByAppendingPathComponent:filename];
-    }
+    NSString *filename = [NSString stringWithFormat:@"Photo%d.png", self.productId];
+    return [[self documentsDirectory] stringByAppendingPathComponent:filename];
 }
 
-- (UIImage *)photoImage {
-    return [UIImage imageWithContentsOfFile:[self photoPath]];
+- (NSString *)thumbnailPhotoPath {
+    NSString *filename = [NSString stringWithFormat:@"ThumbnailPhoto%d.png", self.productId];
+    return [[self documentsDirectory] stringByAppendingPathComponent:filename];
 }
 
 + (NSInteger)nextId {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger nextProductId = [userDefaults integerForKey:@"NextId"];
     if (nextProductId == 0) {
-        // Id should start from 1, not 0, according to SQLite convention.
+        // Id should start from 1, not 0, just to be consistent with SQLite convention.
         nextProductId = 1;
     }
     [userDefaults setInteger:nextProductId+1 forKey:@"NextId"];
     [userDefaults synchronize];
     return nextProductId;
+}
+
+#pragma mark - Private Methods
+
+- (UIImage *)photoImage {
+    // Mock products have negative Ids, such as -1, -2 and -3.
+    if (self.productId < 0) {
+        // "MockProductPhoto1.png", "MockProductPhoto2.png" and "MockProductPhoto3.png"
+        return [UIImage imageNamed:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
+    }
+    else {
+        return [UIImage imageWithContentsOfFile:[self photoPath]];
+    }
+}
+
+- (UIImage *)thumbnailPhotoImage {
+    // In my design, mock products's thumbnail images are identical to original images.
+    // Mock products have negative Ids, such as -1, -2 and -3.
+    if (self.productId < 0) {
+        // "MockProductPhoto1.png", "MockProductPhoto2.png" and "MockProductPhoto3.png"
+        return [UIImage imageNamed:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
+    }
+    else {
+        return [UIImage imageWithContentsOfFile:[self thumbnailPhotoPath]];
+    }
 }
 
 @end

@@ -25,6 +25,8 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
 
 @implementation PWProductDetailViewController
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,6 +58,8 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
 {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
@@ -102,6 +106,8 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -119,12 +125,22 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     }
 }
 
+#pragma mark - Private Methods
+
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
     // Show full-size product photo.
     PWProductPhotoViewController *productPhotoViewController = [[PWProductPhotoViewController alloc] initWithNibName:@"PWProductPhotoViewController" bundle:nil];
     productPhotoViewController.product = self.product;
     [self.navigationController pushViewController:productPhotoViewController animated:YES];
 }
+
+- (void)deleteThisProduct {
+    // Show deletion confirmation first.
+    UIActionSheet *actionSheetDeletionConfirmation = [[UIActionSheet alloc] initWithTitle:@"Are you sure to delete this product?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+    [actionSheetDeletionConfirmation showInView:self.view];
+}
+
+#pragma mark - Utilities
 
 - (void)setupProductColorsOnCell:(UITableViewCell *)cell {
     UIView *viewProductFirstColor = [cell viewWithTag:PWCellViewProductFirstColorTag];
@@ -146,15 +162,11 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     }
 }
 
-- (void)deleteThisProduct {
-    // Show deletion confirmation first.
-    UIActionSheet *actionSheetDeletionConfirmation = [[UIActionSheet alloc] initWithTitle:@"Are you sure to delete this product?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
-    [actionSheetDeletionConfirmation showInView:self.view];
-}
-
 - (void)closeScreen {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {

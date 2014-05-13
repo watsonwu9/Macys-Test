@@ -16,12 +16,17 @@
 
 @interface PWProductDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
-// The details of this product are to be displayed.
+/**
+ the product whose details are to be shown.
+ */
 @property (nonatomic) Product *product;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollViewBackground;
+
 @property (strong, nonatomic) IBOutlet UILabel *labelProductName;
+
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewProductPhoto;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableViewProductDetails;
 
 @end

@@ -10,11 +10,16 @@
 
 @interface PWUpdateProductViewController ()
 
+/**
+ This image picker is used for updating the photo of the product.
+ */
 @property (nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
 @implementation PWUpdateProductViewController
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
@@ -41,11 +46,6 @@
     self.textFieldProductName.text = self.product.productName;
     self.textFieldProductColors.text = [self.product.productColors componentsJoinedByString:@","];
     self.textViewProductDescription.text = self.product.productDescription;
-    
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
-    [self showPhotoMenu];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,13 +53,11 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Private Methods
+
 - (void)cancel {
     
     [self closeScreen];
-}
-
-- (void)closeScreen {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)save {
@@ -85,6 +83,16 @@
             [self popToHomeScreen];
         });
     });
+}
+
+#pragma mark - Utilities
+
+- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+    [self showPhotoMenu];
+}
+
+- (void)closeScreen {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)popToHomeScreen {
@@ -126,6 +134,8 @@
     [self.navigationController presentViewController:self.imagePicker animated:YES completion:nil];
 }
 
+#pragma mark - UIActionSheetDelegate
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         // Take photo.
@@ -140,6 +150,8 @@
         return;
     }
 }
+
+#pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

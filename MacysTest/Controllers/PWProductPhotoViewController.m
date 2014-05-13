@@ -8,11 +8,9 @@
 
 #import "PWProductPhotoViewController.h"
 
-@interface PWProductPhotoViewController ()
-
-@end
-
 @implementation PWProductPhotoViewController
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
@@ -31,6 +29,13 @@
     
     [self.buttonExit addTarget:self action:@selector(toggleFullScreen) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Utilities
 
 - (void)toggleFullScreen {
     if (self.navigationController.navigationBar.alpha == 0.0) {
@@ -51,11 +56,6 @@
         } completion:^(BOOL finished) {
         }];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 @end

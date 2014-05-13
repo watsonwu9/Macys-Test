@@ -11,7 +11,14 @@
 
 @interface PWProductStoresViewController : UITableViewController
 
+/**
+ the list of store ids.
+ */
 @property (nonatomic) NSMutableArray *storeIds;
+
+/**
+ the list of stores to be shown.
+ */
 @property (nonatomic) NSMutableArray *stores;
 
 @end
