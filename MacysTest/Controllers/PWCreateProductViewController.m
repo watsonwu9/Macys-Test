@@ -120,7 +120,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
         // Load "products" on background thread.
         if (![[PWSQLiteManager sharedInstance] add:product]) {
             // Failed to create the product.
-            NSLog(@"Failed to create the product.");
+            DLog(@"Failed to create the product.");
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,7 +148,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
     
     if (!jsonArray) {
-        NSLog(@"Error loading json data: %@", [error userInfo]);
+        DLog(@"Error loading json data: %@", [error userInfo]);
     }
     else {
         for (NSDictionary *productInfo in jsonArray) {

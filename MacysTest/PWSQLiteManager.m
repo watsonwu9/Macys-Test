@@ -37,7 +37,7 @@
     BOOL success;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     success = [fileManager fileExistsAtPath:self.databasePath];
-    NSLog(@"Success: %d", success);
+    DLog(@"Success: %d", success);
     
     // If the database already exists, then do nothing more
     if (success) {
@@ -49,7 +49,7 @@
         NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseName];
         if (![fileManager copyItemAtPath:databasePathFromApp toPath:self.databasePath error:&error]) {
             // Handle error
-            NSLog(@"Copying error: %@", [error userInfo]);
+            DLog(@"Copying error: %@", [error userInfo]);
         }
     }
 }
@@ -91,7 +91,7 @@
     // Delete the product's related photo in the Documents directory
     if (success) {
         if (![[PWPhotoManager sharedInstance] deleteImageAtPath:[product photoPath]]) {
-            NSLog(@"Error deleting the photo of the product.");
+            DLog(@"Error deleting the photo of the product.");
         }
     }
     

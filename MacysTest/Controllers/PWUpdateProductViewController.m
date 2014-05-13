@@ -76,7 +76,7 @@
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // UPDATE this product in the products table.
         if (![[PWSQLiteManager sharedInstance] update:self.product]) {
-            NSLog(@"Failed to update the product.");
+            DLog(@"Failed to update the product.");
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];

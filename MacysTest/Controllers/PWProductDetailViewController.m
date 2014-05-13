@@ -185,7 +185,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
             [self performSelector:@selector(closeScreen) withObject:self afterDelay:PWDeleteProductHUDDuration];
         }
         else {
-            NSLog(@"Failed to delete the product.");
+            DLog(@"Failed to delete the product.");
         }
     }
     else if (buttonIndex == 1) {

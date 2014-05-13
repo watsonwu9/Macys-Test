@@ -26,7 +26,7 @@
     
     NSError *error;
     if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
-        NSLog(@"Error saving the photo: %@", error);
+        DLog(@"Error saving the photo: %@", error);
     }
 }
 
@@ -35,7 +35,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     if (![fileManager removeItemAtPath:pathName error:&error]) {
-        NSLog(@"Error deleting the photo: %@", [error userInfo]);
+        DLog(@"Error deleting the photo: %@", [error userInfo]);
     }
     else {
         success = YES;
@@ -48,7 +48,7 @@
     
     NSError *error;
     if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
-        NSLog(@"Error updating the photo: %@", error);
+        DLog(@"Error updating the photo: %@", error);
     }
 }
 

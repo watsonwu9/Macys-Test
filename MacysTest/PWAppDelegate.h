@@ -11,4 +11,6 @@
 
 @interface PWAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic) UIWindow *window;
+
 @end
