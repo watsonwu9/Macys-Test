@@ -13,8 +13,7 @@
 
 @property (nonatomic) Product *product;
 
-
-@property (strong, nonatomic) IBOutlet UIWebView *webViewProductPhoto;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewProductPhoto;
 @property (strong, nonatomic) IBOutlet UIButton *buttonExit;
 
 @end
