@@ -24,11 +24,11 @@
     // Save the image to the Documents Directory asynchronously.
     __block BOOL success;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *originalData = UIImagePNGRepresentation([image fixOrientation]);
+        NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
         
         NSError *error3;
-        if (![originalData writeToFile:pathName options:NSDataWritingAtomic error:&error3]) {
-            NSLog(@"Error saving original photo: %@", error3);
+        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error3]) {
+            NSLog(@"Error saving the photo: %@", error3);
         }
         else {
             success = YES;
@@ -42,7 +42,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     if (![fileManager removeItemAtPath:pathName error:&error]) {
-        NSLog(@"Error deleting original photo: %@", [error userInfo]);
+        NSLog(@"Error deleting the photo: %@", [error userInfo]);
     }
     else {
         success = YES;

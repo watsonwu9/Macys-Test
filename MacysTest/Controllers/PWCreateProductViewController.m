@@ -26,8 +26,8 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
     [super viewDidLoad];
     
     // Register the tableview cell.
-    UINib *nib = [UINib nibWithNibName:@"ProductCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"ProductCell"];
+    UINib *nib = [UINib nibWithNibName:@"TableViewCellProduct" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"TableViewCellProduct"];
     
     // Initialize "mockProducts".
     self.mockProducts = [[NSMutableArray alloc] init];
@@ -78,7 +78,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Product *mockProduct = [self.mockProducts objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProductCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TableViewCellProduct" forIndexPath:indexPath];
     
     UIImageView *imageViewProductPhoto = (UIImageView *)[cell viewWithTag:PWCellImageViewProductPhotoTag];
     UILabel *labelProductName = (UILabel *)[cell viewWithTag:PWCellLabelProductNameTag];
@@ -91,8 +91,8 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
     labelProductName.text = mockProduct.productName;
     if (mockProduct.productRegularPrice > mockProduct.productSalePrice) {
         // Show a strikethrough effect if the sale price is lower.
-        labelProductRegularPrice.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Reg. $%.02f", mockProduct.productRegularPrice] attributes:[NSDictionary dictionaryWithObjectsAndKeys:@(NSUnderlineStyleSingle), NSStrikethroughStyleAttributeName , nil]];
-        labelProductSalePrice.text = [NSString stringWithFormat:@"Sale $%.02f", mockProduct.productSalePrice];
+        labelProductRegularPrice.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"$%.02f", mockProduct.productRegularPrice] attributes:[NSDictionary dictionaryWithObjectsAndKeys:@(NSUnderlineStyleSingle), NSStrikethroughStyleAttributeName , nil]];
+        labelProductSalePrice.text = [NSString stringWithFormat:@"$%.02f", mockProduct.productSalePrice];
     }
     else {
         // If productSalePrice is no less than productRegularPrice, then only show the latter.
@@ -144,7 +144,7 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
             CGFloat productRegularPrice = [[productInfo objectForKey:@"regular_price"] floatValue];
             CGFloat productSalePrice = [[productInfo objectForKey:@"sale_price"] floatValue];
             NSArray *productColors = [productInfo objectForKey:@"colors"];
-            NSDictionary *productStores = nil;
+            NSDictionary *productStores = [productInfo objectForKey:@"stores"];
             
             Product *product = [[Product alloc] initWithId:productId andName:productName andDescription:productDescription andRegularPrice:productRegularPrice andSalePrice:productSalePrice andColors:productColors andStores:productStores];
             [self.mockProducts addObject:product];

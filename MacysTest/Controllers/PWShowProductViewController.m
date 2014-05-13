@@ -21,21 +21,25 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
 
 @implementation PWShowProductViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Register the tableview cell.
-    UINib *nib = [UINib nibWithNibName:@"ProductCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"ProductCell"];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     // Initialize "mockProducts".
     self.products = [[NSMutableArray alloc] init];
     
-    // Load products from ProductDB.sql
+    // Load products from MacysDB.sql
+    [self updateProductsAndTableView];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
     self.navigationItem.title = @"All Products";
     
-    [self updateProductsAndTableView];
+    // Register the tableview cell.
+    UINib *nib = [UINib nibWithNibName:@"TableViewCellProduct" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"TableViewCellProduct"];
 }
 
 - (void)updateProductsAndTableView {
@@ -82,7 +86,7 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
 {
     Product *product = [self.products objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProductCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TableViewCellProduct" forIndexPath:indexPath];
     
     UIImageView *imageViewProductPhoto = (UIImageView *)[cell viewWithTag:PWCellImageViewProductPhotoTag];
     UILabel *labelProductName = (UILabel *)[cell viewWithTag:PWCellLabelProductNameTag];
@@ -95,8 +99,8 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
     labelProductName.text = product.productName;
     if (product.productRegularPrice > product.productSalePrice) {
         // Show a strikethrough effect if the sale price is lower.
-        labelProductRegularPrice.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Reg. $%.02f", product.productRegularPrice] attributes:[NSDictionary dictionaryWithObjectsAndKeys:@(NSUnderlineStyleSingle), NSStrikethroughStyleAttributeName , nil]];
-        labelProductSalePrice.text = [NSString stringWithFormat:@"Sale $%.02f", product.productSalePrice];
+        labelProductRegularPrice.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"$%.02f", product.productRegularPrice] attributes:[NSDictionary dictionaryWithObjectsAndKeys:@(NSUnderlineStyleSingle), NSStrikethroughStyleAttributeName , nil]];
+        labelProductSalePrice.text = [NSString stringWithFormat:@"$%.02f", product.productSalePrice];
     }
     else {
         // If productSalePrice is no less than productRegularPrice, then only show the latter.

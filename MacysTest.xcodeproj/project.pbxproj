@@ -23,17 +23,25 @@
 		D405CCF3191FD0D40059E052 /* MacysTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCF2191FD0D40059E052 /* MacysTestTests.m */; };
 		D405CCFE191FD2080059E052 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CCFD191FD2080059E052 /* Product.m */; };
 		D405CD00191FDE080059E052 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D405CCFF191FDE080059E052 /* libsqlite3.0.dylib */; };
-		D405CD04191FE1320059E052 /* ProductDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = D405CD03191FE1320059E052 /* ProductDB.sql */; };
+		D405CD04191FE1320059E052 /* MacysDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = D405CD03191FE1320059E052 /* MacysDB.sql */; };
 		D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D405CD07191FE94D0059E052 /* PWSQLiteManager.m */; };
-		D41243CD1921143500495D77 /* PWProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243CB1921143500495D77 /* PWProductDetailViewController.m */; };
-		D41243CE1921143500495D77 /* PWProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41243CC1921143500495D77 /* PWProductDetailViewController.xib */; };
 		D41243D1192118B000495D77 /* PWPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243D0192118B000495D77 /* PWPhotoManager.m */; };
+		D41243DA19211F4200495D77 /* PWProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243D819211F4200495D77 /* PWProductDetailViewController.m */; };
+		D41243DB19211F4200495D77 /* PWProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41243D919211F4200495D77 /* PWProductDetailViewController.xib */; };
+		D41243DD1921231100495D77 /* TableViewCellProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41243DC1921231100495D77 /* TableViewCellProductDetail.xib */; };
+		D41243E0192136A800495D77 /* NSString+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243DF192136A800495D77 /* NSString+Color.m */; };
+		D41243E519213B8300495D77 /* PWProductPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41243E319213B8300495D77 /* PWProductPhotoViewController.m */; };
+		D41243E619213B8300495D77 /* PWProductPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41243E419213B8300495D77 /* PWProductPhotoViewController.xib */; };
 		D467E52719204E5700C32058 /* PWCreateProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467E52519204E5700C32058 /* PWCreateProductViewController.m */; };
 		D467E52819204E5700C32058 /* PWCreateProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52619204E5700C32058 /* PWCreateProductViewController.xib */; };
-		D467E52B192055A100C32058 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52A192055A100C32058 /* ProductCell.xib */; };
+		D467E52B192055A100C32058 /* TableViewCellProduct.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52A192055A100C32058 /* TableViewCellProduct.xib */; };
 		D467E52F1920700600C32058 /* PWShowProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D467E52D1920700600C32058 /* PWShowProductViewController.m */; };
 		D467E5301920700600C32058 /* PWShowProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D467E52E1920700600C32058 /* PWShowProductViewController.xib */; };
-		D467E5321920747800C32058 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = D467E5311920747800C32058 /* MockData.json */; };
+		D49350C5192273A100A789AD /* PWProductStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49350C3192273A100A789AD /* PWProductStoresViewController.m */; };
+		D49350C6192273A100A789AD /* PWProductStoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49350C4192273A100A789AD /* PWProductStoresViewController.xib */; };
+		D49350C81922743500A789AD /* TableViewCellStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49350C71922743500A789AD /* TableViewCellStore.xib */; };
+		D49350CA19227EF100A789AD /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = D49350C919227EF100A789AD /* MockData.json */; };
+		D49350CD1922880500A789AD /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = D49350CC1922880500A789AD /* Store.m */; };
 		D4B3255F192091BC00F9F79D /* UIImage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3255E192091BC00F9F79D /* UIImage+Tools.m */; };
 		D4B32567192097A000F9F79D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B32562192097A000F9F79D /* FMDatabase.m */; };
 		D4B32568192097A000F9F79D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B32564192097A000F9F79D /* FMDatabaseAdditions.m */; };
@@ -76,22 +84,34 @@
 		D405CCFC191FD2080059E052 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Model/Product.h; sourceTree = "<group>"; };
 		D405CCFD191FD2080059E052 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Model/Product.m; sourceTree = "<group>"; };
 		D405CCFF191FDE080059E052 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		D405CD03191FE1320059E052 /* ProductDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProductDB.sql; sourceTree = "<group>"; };
+		D405CD03191FE1320059E052 /* MacysDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = MacysDB.sql; sourceTree = "<group>"; };
 		D405CD06191FE94D0059E052 /* PWSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSQLiteManager.h; sourceTree = "<group>"; };
 		D405CD07191FE94D0059E052 /* PWSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSQLiteManager.m; sourceTree = "<group>"; };
-		D41243CA1921143500495D77 /* PWProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWProductDetailViewController.h; path = Controllers/PWProductDetailViewController.h; sourceTree = "<group>"; };
-		D41243CB1921143500495D77 /* PWProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWProductDetailViewController.m; path = Controllers/PWProductDetailViewController.m; sourceTree = "<group>"; };
-		D41243CC1921143500495D77 /* PWProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWProductDetailViewController.xib; path = Controllers/PWProductDetailViewController.xib; sourceTree = "<group>"; };
 		D41243CF192118B000495D77 /* PWPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPhotoManager.h; sourceTree = "<group>"; };
 		D41243D0192118B000495D77 /* PWPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPhotoManager.m; sourceTree = "<group>"; };
+		D41243D719211F4200495D77 /* PWProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWProductDetailViewController.h; path = Controllers/PWProductDetailViewController.h; sourceTree = "<group>"; };
+		D41243D819211F4200495D77 /* PWProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWProductDetailViewController.m; path = Controllers/PWProductDetailViewController.m; sourceTree = "<group>"; };
+		D41243D919211F4200495D77 /* PWProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWProductDetailViewController.xib; path = Controllers/PWProductDetailViewController.xib; sourceTree = "<group>"; };
+		D41243DC1921231100495D77 /* TableViewCellProductDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellProductDetail.xib; sourceTree = "<group>"; };
+		D41243DE192136A800495D77 /* NSString+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Color.h"; sourceTree = "<group>"; };
+		D41243DF192136A800495D77 /* NSString+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Color.m"; sourceTree = "<group>"; };
+		D41243E219213B8300495D77 /* PWProductPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWProductPhotoViewController.h; path = Controllers/PWProductPhotoViewController.h; sourceTree = "<group>"; };
+		D41243E319213B8300495D77 /* PWProductPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWProductPhotoViewController.m; path = Controllers/PWProductPhotoViewController.m; sourceTree = "<group>"; };
+		D41243E419213B8300495D77 /* PWProductPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWProductPhotoViewController.xib; path = Controllers/PWProductPhotoViewController.xib; sourceTree = "<group>"; };
 		D467E52419204E5700C32058 /* PWCreateProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWCreateProductViewController.h; path = Controllers/PWCreateProductViewController.h; sourceTree = "<group>"; };
 		D467E52519204E5700C32058 /* PWCreateProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWCreateProductViewController.m; path = Controllers/PWCreateProductViewController.m; sourceTree = "<group>"; };
 		D467E52619204E5700C32058 /* PWCreateProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWCreateProductViewController.xib; path = Controllers/PWCreateProductViewController.xib; sourceTree = "<group>"; };
-		D467E52A192055A100C32058 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		D467E52A192055A100C32058 /* TableViewCellProduct.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellProduct.xib; sourceTree = "<group>"; };
 		D467E52C1920700600C32058 /* PWShowProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWShowProductViewController.h; path = Controllers/PWShowProductViewController.h; sourceTree = "<group>"; };
 		D467E52D1920700600C32058 /* PWShowProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWShowProductViewController.m; path = Controllers/PWShowProductViewController.m; sourceTree = "<group>"; };
 		D467E52E1920700600C32058 /* PWShowProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWShowProductViewController.xib; path = Controllers/PWShowProductViewController.xib; sourceTree = "<group>"; };
-		D467E5311920747800C32058 /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		D49350C2192273A100A789AD /* PWProductStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PWProductStoresViewController.h; path = Controllers/PWProductStoresViewController.h; sourceTree = "<group>"; };
+		D49350C3192273A100A789AD /* PWProductStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PWProductStoresViewController.m; path = Controllers/PWProductStoresViewController.m; sourceTree = "<group>"; };
+		D49350C4192273A100A789AD /* PWProductStoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PWProductStoresViewController.xib; path = Controllers/PWProductStoresViewController.xib; sourceTree = "<group>"; };
+		D49350C71922743500A789AD /* TableViewCellStore.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellStore.xib; sourceTree = "<group>"; };
+		D49350C919227EF100A789AD /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		D49350CB1922880500A789AD /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Store.h; path = Model/Store.h; sourceTree = "<group>"; };
+		D49350CC1922880500A789AD /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Store.m; path = Model/Store.m; sourceTree = "<group>"; };
 		D4B3255D192091BC00F9F79D /* UIImage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tools.h"; sourceTree = "<group>"; };
 		D4B3255E192091BC00F9F79D /* UIImage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tools.m"; sourceTree = "<group>"; };
 		D4B32561192097A000F9F79D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -172,19 +192,20 @@
 				D405CD05191FE13B0059E052 /* Database */,
 				D4B32560192091C100F9F79D /* Categories */,
 				D4B3257519209D5A00F9F79D /* MBProgressHUD */,
+				D41243E1192136AC00495D77 /* NSString2UIColor */,
 				D405CCD6191FD0D30059E052 /* PWAppDelegate.h */,
 				D405CCD7191FD0D30059E052 /* PWAppDelegate.m */,
 				D405CCD9191FD0D30059E052 /* Main.storyboard */,
 				D405CCDC191FD0D30059E052 /* PWHomeViewController.h */,
 				D405CCDD191FD0D30059E052 /* PWHomeViewController.m */,
-				D405CD01191FE0D20059E052 /* Model */,
+				D405CD01191FE0D20059E052 /* Models */,
+				D49350CE19228D2A00A789AD /* Views */,
 				D467E52919204E5B00C32058 /* Controllers */,
 				D405CD06191FE94D0059E052 /* PWSQLiteManager.h */,
 				D405CD07191FE94D0059E052 /* PWSQLiteManager.m */,
 				D41243CF192118B000495D77 /* PWPhotoManager.h */,
 				D41243D0192118B000495D77 /* PWPhotoManager.m */,
-				D467E52A192055A100C32058 /* ProductCell.xib */,
-				D467E5311920747800C32058 /* MockData.json */,
+				D49350C919227EF100A789AD /* MockData.json */,
 				D405CCDF191FD0D40059E052 /* Images.xcassets */,
 				D405CCCE191FD0D30059E052 /* Supporting Files */,
 			);
@@ -220,21 +241,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D405CD01191FE0D20059E052 /* Model */ = {
+		D405CD01191FE0D20059E052 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D405CCFC191FD2080059E052 /* Product.h */,
 				D405CCFD191FD2080059E052 /* Product.m */,
+				D49350CB1922880500A789AD /* Store.h */,
+				D49350CC1922880500A789AD /* Store.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		D405CD05191FE13B0059E052 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				D405CD03191FE1320059E052 /* ProductDB.sql */,
+				D405CD03191FE1320059E052 /* MacysDB.sql */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		D41243E1192136AC00495D77 /* NSString2UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				D41243DE192136A800495D77 /* NSString+Color.h */,
+				D41243DF192136A800495D77 /* NSString+Color.m */,
+			);
+			name = NSString2UIColor;
 			sourceTree = "<group>";
 		};
 		D467E52919204E5B00C32058 /* Controllers */ = {
@@ -242,15 +274,31 @@
 			children = (
 				D467E52419204E5700C32058 /* PWCreateProductViewController.h */,
 				D467E52519204E5700C32058 /* PWCreateProductViewController.m */,
-				D467E52619204E5700C32058 /* PWCreateProductViewController.xib */,
 				D467E52C1920700600C32058 /* PWShowProductViewController.h */,
 				D467E52D1920700600C32058 /* PWShowProductViewController.m */,
-				D467E52E1920700600C32058 /* PWShowProductViewController.xib */,
-				D41243CA1921143500495D77 /* PWProductDetailViewController.h */,
-				D41243CB1921143500495D77 /* PWProductDetailViewController.m */,
-				D41243CC1921143500495D77 /* PWProductDetailViewController.xib */,
+				D41243D719211F4200495D77 /* PWProductDetailViewController.h */,
+				D41243D819211F4200495D77 /* PWProductDetailViewController.m */,
+				D41243E219213B8300495D77 /* PWProductPhotoViewController.h */,
+				D41243E319213B8300495D77 /* PWProductPhotoViewController.m */,
+				D49350C2192273A100A789AD /* PWProductStoresViewController.h */,
+				D49350C3192273A100A789AD /* PWProductStoresViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D49350CE19228D2A00A789AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D467E52619204E5700C32058 /* PWCreateProductViewController.xib */,
+				D467E52E1920700600C32058 /* PWShowProductViewController.xib */,
+				D41243D919211F4200495D77 /* PWProductDetailViewController.xib */,
+				D41243E419213B8300495D77 /* PWProductPhotoViewController.xib */,
+				D49350C4192273A100A789AD /* PWProductStoresViewController.xib */,
+				D49350C71922743500A789AD /* TableViewCellStore.xib */,
+				D467E52A192055A100C32058 /* TableViewCellProduct.xib */,
+				D41243DC1921231100495D77 /* TableViewCellProductDetail.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		D4B32560192091C100F9F79D /* Categories */ = {
@@ -366,15 +414,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41243CE1921143500495D77 /* PWProductDetailViewController.xib in Resources */,
+				D41243DB19211F4200495D77 /* PWProductDetailViewController.xib in Resources */,
 				D467E5301920700600C32058 /* PWShowProductViewController.xib in Resources */,
-				D467E5321920747800C32058 /* MockData.json in Resources */,
+				D49350CA19227EF100A789AD /* MockData.json in Resources */,
 				D405CCE0191FD0D40059E052 /* Images.xcassets in Resources */,
 				D467E52819204E5700C32058 /* PWCreateProductViewController.xib in Resources */,
-				D467E52B192055A100C32058 /* ProductCell.xib in Resources */,
+				D467E52B192055A100C32058 /* TableViewCellProduct.xib in Resources */,
+				D41243E619213B8300495D77 /* PWProductPhotoViewController.xib in Resources */,
+				D49350C81922743500A789AD /* TableViewCellStore.xib in Resources */,
 				D405CCD2191FD0D30059E052 /* InfoPlist.strings in Resources */,
-				D405CD04191FE1320059E052 /* ProductDB.sql in Resources */,
+				D405CD04191FE1320059E052 /* MacysDB.sql in Resources */,
 				D405CCDB191FD0D30059E052 /* Main.storyboard in Resources */,
+				D41243DD1921231100495D77 /* TableViewCellProductDetail.xib in Resources */,
+				D49350C6192273A100A789AD /* PWProductStoresViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,9 +446,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D467E52F1920700600C32058 /* PWShowProductViewController.m in Sources */,
+				D49350C5192273A100A789AD /* PWProductStoresViewController.m in Sources */,
 				D4B3257019209A4C00F9F79D /* FMDatabasePool.m in Sources */,
+				D49350CD1922880500A789AD /* Store.m in Sources */,
 				D4B3255F192091BC00F9F79D /* UIImage+Tools.m in Sources */,
+				D41243E0192136A800495D77 /* NSString+Color.m in Sources */,
 				D405CCDE191FD0D30059E052 /* PWHomeViewController.m in Sources */,
+				D41243DA19211F4200495D77 /* PWProductDetailViewController.m in Sources */,
 				D4B3257119209A4C00F9F79D /* FMDatabaseQueue.m in Sources */,
 				D4B32567192097A000F9F79D /* FMDatabase.m in Sources */,
 				D405CCFE191FD2080059E052 /* Product.m in Sources */,
@@ -405,9 +461,9 @@
 				D405CCD8191FD0D30059E052 /* PWAppDelegate.m in Sources */,
 				D405CD08191FE94D0059E052 /* PWSQLiteManager.m in Sources */,
 				D4B32569192097A000F9F79D /* FMResultSet.m in Sources */,
-				D41243CD1921143500495D77 /* PWProductDetailViewController.m in Sources */,
 				D467E52719204E5700C32058 /* PWCreateProductViewController.m in Sources */,
 				D4B32568192097A000F9F79D /* FMDatabaseAdditions.m in Sources */,
+				D41243E519213B8300495D77 /* PWProductPhotoViewController.m in Sources */,
 				D4B3257419209D5500F9F79D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

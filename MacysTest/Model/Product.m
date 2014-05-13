@@ -18,7 +18,7 @@
         self.productDescription = productDescription;
         self.productRegularPrice = productRegularPrice;
         self.productSalePrice = productSalePrice;
-        self.productPhoto = [self originalPhotoImage];
+        self.productPhoto = [self photoImage];
         self.productColors = productColors;
         self.productStores = productStores;
     }
@@ -31,20 +31,20 @@
     return documentsDirectory;
 }
 
-- (NSString *)originalPhotoPath {
+- (NSString *)photoPath {
     if (self.productId < 0) {
         // Mock products' Ids are negative, for example, -1, -2 and -3
-        // "MockProductPhoto1.png", "MockProductPhoto2.png" and so on...
+        // "MockProductPhoto-1.png", "MockProductPhoto-2.png" and so on...
         return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
     }
     else {
-        NSString *filename = [NSString stringWithFormat:@"OriginalPhoto%d.png", self.productId];
+        NSString *filename = [NSString stringWithFormat:@"Photo%d.png", self.productId];
         return [[self documentsDirectory] stringByAppendingPathComponent:filename];
     }
 }
 
-- (UIImage *)originalPhotoImage {
-    return [UIImage imageWithContentsOfFile:[self originalPhotoPath]];
+- (UIImage *)photoImage {
+    return [UIImage imageWithContentsOfFile:[self photoPath]];
 }
 
 + (NSInteger)nextId {

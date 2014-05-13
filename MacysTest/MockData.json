@@ -10,18 +10,34 @@
                 "yellow",
                 "red",
                 "green"
-            ]
+            ],
+            "stores": {
+                "available_store_id": [
+                     3,
+                     4,
+                     5
+                ]
+            }
         },
         {
             "id": -2,
             "name": "Callaway Razr Solid Performance Golf Polo",
-            "description": "The Callaway Razr solid performance polo is the ultimate grab-and-go staple solid. Stock up on them all for a wear anywhere color assortment. Available in fourteen core colors, all featuring Chevron logo rubber patch and moisture wicking.",
+            "description": "The Callaway Razr solid performance polo is the ultimate grab-and-go staple solid. Stock up on them all for a wear anywhere color assortment.",
             "regular_price": 55,
             "sale_price": 39.9,
             "product_photo": "MockProductPhoto2.png",
             "colors": [
-                "red"
-            ]
+                "red",
+                "blue",
+                "green"
+            ],
+            "stores": {
+                "available_store_id": [
+                  1,
+                  2,
+                  4
+                 ]
+             }
         },
         {
             "id": -3,
@@ -31,40 +47,15 @@
             "sale_price": 270,
             "product_photo": "MockProductPhoto3.png",
             "colors": [
-                "black"
-            ]
-        },
-         {
-         "id": -3,
-         "name": "Alfani Jacket Solid Black Slim Fit",
-         "description": "A slim, updated construction makes this smooth suit jacket from Alfani a great addition to your tailored wardrobe.",
-         "regular_price": 360,
-         "sale_price": 360,
-         "product_photo": "MockProductPhoto3.png",
-         "colors": [
-                    "black"
-                    ]
-         },
-         {
-         "id": -3,
-         "name": "Alfani Jacket Solid Black Slim Fit",
-         "description": "A slim, updated construction makes this smooth suit jacket from Alfani a great addition to your tailored wardrobe.",
-         "regular_price": 360,
-         "sale_price": 360,
-         "product_photo": "MockProductPhoto3.png",
-         "colors": [
-                    "black"
-                    ]
-         },
-         {
-         "id": -3,
-         "name": "Alfani Jacket Solid Black Slim Fit",
-         "description": "A slim, updated construction makes this smooth suit jacket from Alfani a great addition to your tailored wardrobe.",
-         "regular_price": 360,
-         "sale_price": 270,
-         "product_photo": "MockProductPhoto3.png",
-         "colors": [
-                    "black"
-                    ]
-         }
+                "black",
+                "blue"
+            ],
+             "stores": {
+                 "available_store_id": [
+                      1,
+                      3,
+                      5
+                  ]
+             }
+        }
 ]

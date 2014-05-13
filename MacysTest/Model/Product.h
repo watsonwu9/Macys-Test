@@ -28,14 +28,14 @@
  @params productPhoto the related photo for the product.
  @params productColors the available colors for the product.
  @params productStores the availbale stores for the product.
- @returns an instance of the Product class.
+ @returns an instance of the Product.
  */
 - (id)initWithId:(NSInteger)productId andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
 
 /**
  @returns the related photo path for the product.
  */
-- (NSString *)originalPhotoPath;
+- (NSString *)photoPath;
 
 /**
  @returns the next available id for the product to be created.
