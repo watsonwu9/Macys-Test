@@ -12,6 +12,7 @@ static const NSInteger PWCellImageViewProductPhotoTag = 1000;
 static const NSInteger PWCellLabelProductNameTag = 2000;
 static const NSInteger PWCellLabelProductRegularPriceTag = 3000;
 static const NSInteger PWCellLabelProductSalePriceTag = 4000;
+
 static const CGFloat PWCreateProductHUDDuration = 0.6f;
 
 @interface PWCreateProductViewController ()

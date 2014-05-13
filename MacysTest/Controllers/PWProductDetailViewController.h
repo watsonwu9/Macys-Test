@@ -11,6 +11,7 @@
 #import "NSString+Color.h"
 #import "PWProductPhotoViewController.h"
 #import "PWProductStoresViewController.h"
+#import "PWUpdateProductViewController.h"
 #import "MBProgressHUD.h"
 
 @interface PWProductDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>

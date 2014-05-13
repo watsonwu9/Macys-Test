@@ -13,7 +13,7 @@
 
 @property (nonatomic) Product *product;
 
-// Webview to display the product photo (built-in multiple gestures!).
+
 @property (strong, nonatomic) IBOutlet UIWebView *webViewProductPhoto;
 @property (strong, nonatomic) IBOutlet UIButton *buttonExit;
 

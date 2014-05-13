@@ -29,4 +29,11 @@
  */
 - (BOOL)deleteImageAtPath:(NSString *)pathName;
 
+/**
+ @params image the image to be updated.
+ @params pathName the path for the image to be updated.
+ @returns YES if the image is successfully updated.
+ */
+- (BOOL)updateImage:(UIImage *)image atPath:(NSString *)pathName;
+
 @end

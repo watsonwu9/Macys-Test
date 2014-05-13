@@ -26,9 +26,9 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
         
-        NSError *error3;
-        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error3]) {
-            NSLog(@"Error saving the photo: %@", error3);
+        NSError *error;
+        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
+            NSLog(@"Error saving the photo: %@", error);
         }
         else {
             success = YES;
@@ -47,6 +47,23 @@
     else {
         success = YES;
     }
+    return success;
+}
+
+- (BOOL)updateImage:(UIImage *)image atPath:(NSString *)pathName {
+    // Update the image at the desired path asynchronously.
+    __block BOOL success;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imageData = UIImagePNGRepresentation([image fixOrientation]);
+        
+        NSError *error;
+        if (![imageData writeToFile:pathName options:NSDataWritingAtomic error:&error]) {
+            NSLog(@"Error updating the photo: %@", error);
+        }
+        else {
+            success = YES;
+        }
+    });
     return success;
 }
 

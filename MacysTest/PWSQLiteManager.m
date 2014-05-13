@@ -100,12 +100,22 @@
     return success;
 }
 
+// CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
 - (BOOL)update:(Product *)product {
+    FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
+    [database open];
     
-    BOOL success;
+    // Save store_id combined string into the column "stores" of the products table
+    // For example, "2,4" means stores with store_id 2 and store_id 4.
+    NSDictionary *productStores = product.productStores;
+    NSArray *storeIdsArray = [productStores objectForKey:@"available_store_id"];
+    NSString *storeIdsString = [storeIdsArray componentsJoinedByString:@","];
+    
+    BOOL success = [database executeUpdate:@"UPDATE products SET name=?, description=?, regular_price=?, sale_price=?, colors=?, stores=? WHERE id=?", product.productName, product.productDescription, @(product.productRegularPrice), @(product.productSalePrice), [product.productColors componentsJoinedByString:@","], storeIdsString, @(product.productId)];
+    
     // Update the product's related photo in the documents directory
     if (success) {
-        //
+        [[PWPhotoManager sharedInstance] updateImage:product.productPhoto atPath:[product photoPath]];
     }
     
     return YES;

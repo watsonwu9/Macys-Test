@@ -113,7 +113,9 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     }
     else if (indexPath.row == 4) {
         // Update Product Info.
-        NSLog(@"Now I am ready to implement update!");
+        PWUpdateProductViewController *updateProductViewController = [[PWUpdateProductViewController alloc] initWithNibName:@"PWUpdateProductViewController" bundle:nil];
+        updateProductViewController.product = self.product;
+        [self.navigationController pushViewController:updateProductViewController animated:YES];
     }
 }
 
@@ -158,7 +160,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     if (buttonIndex == 0) {
         // Delete this product.
         if ([[PWSQLiteManager sharedInstance] remove:self.product]) {
-            // Display "Created!" HUD.
+            // Display "Deleted!" HUD.
             MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
             [self.navigationController.view addSubview:HUD];
             HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
