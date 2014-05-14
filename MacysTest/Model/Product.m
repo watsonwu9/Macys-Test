@@ -40,11 +40,6 @@
     return [[self documentsDirectory] stringByAppendingPathComponent:filename];
 }
 
-- (NSString *)thumbnailPhotoPath {
-    NSString *filename = [NSString stringWithFormat:@"ThumbnailPhoto%d.png", self.productId];
-    return [[self documentsDirectory] stringByAppendingPathComponent:filename];
-}
-
 + (NSInteger)nextId {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger nextProductId = [userDefaults integerForKey:@"NextId"];
@@ -67,18 +62,6 @@
     }
     else {
         return [UIImage imageWithContentsOfFile:[self photoPath]];
-    }
-}
-
-- (UIImage *)thumbnailPhotoImage {
-    // In my design, mock products's thumbnail images are identical to original images.
-    // Mock products have negative Ids, such as -1, -2 and -3.
-    if (self.productId < 0) {
-        // "MockProductPhoto1.png", "MockProductPhoto2.png" and "MockProductPhoto3.png"
-        return [UIImage imageNamed:[NSString stringWithFormat:@"MockProductPhoto%d.png", (-1) * self.productId]];
-    }
-    else {
-        return [UIImage imageWithContentsOfFile:[self thumbnailPhotoPath]];
     }
 }
 

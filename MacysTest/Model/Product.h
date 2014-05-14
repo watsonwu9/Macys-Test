@@ -69,11 +69,6 @@
 - (NSString *)photoPath;
 
 /**
- @returns the related thumbnail photo path for the product.
- */
-- (NSString *)thumbnailPhotoPath;
-
-/**
  @returns the next available id for the product to be created.
  */
 + (NSInteger)nextId;
