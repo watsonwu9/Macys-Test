@@ -23,8 +23,6 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollViewBackground;
 
-@property (strong, nonatomic) IBOutlet UILabel *labelProductName;
-
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewProductPhoto;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViewProductDetails;

@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PWProductDetailViewController">
             <connections>
                 <outlet property="imageViewProductPhoto" destination="WPE-IY-vMW" id="wGA-Rb-Rrm"/>
-                <outlet property="labelProductName" destination="Eue-Za-D2X" id="l1j-4B-kko"/>
                 <outlet property="scrollViewBackground" destination="8aZ-90-hvA" id="Zh0-9f-h4c"/>
                 <outlet property="tableViewProductDetails" destination="qct-Oz-Owu" id="ESK-68-QZ6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,13 +32,6 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </tableView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product's Name (Boat-Neck Top)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Eue-Za-D2X">
-                            <rect key="frame" x="20" y="188" width="280" height="42"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                 </scrollView>
             </subviews>

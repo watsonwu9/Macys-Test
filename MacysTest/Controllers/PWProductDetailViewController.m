@@ -48,12 +48,20 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     tapGestureRecognizer.delegate = self;
     [self.imageViewProductPhoto addGestureRecognizer:tapGestureRecognizer];
 
-    self.labelProductName.text = self.product.productName;
-    CGRect frame = self.labelProductName.frame;
-    // Adjust frame for iOS 6.x frame
+    // It is hard to adjust the frame of product name label when I compromise auto-layout for better interests. Therefore, the only way is to progammatically create UILabel.
+    UILabel *labelProductName;
     if (!IS_IOS_7) {
-        self.labelProductName.frame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame) - 30, CGRectGetWidth(frame), CGRectGetHeight(frame));
+        labelProductName = [[UILabel alloc] initWithFrame:CGRectMake(20, 168, 280, 42)];
     }
+    else {
+        labelProductName = [[UILabel alloc] initWithFrame:CGRectMake(20, 252, 280, 42)];
+    }
+    labelProductName.backgroundColor = [UIColor clearColor];
+    labelProductName.numberOfLines = 2;
+    labelProductName.textAlignment = NSTextAlignmentCenter;
+    labelProductName.text = self.product.productName;
+    [self.view addSubview:labelProductName];
+    [self.view bringSubviewToFront:labelProductName];
     
     self.tableViewProductDetails.delegate = self;
     self.tableViewProductDetails.dataSource = self;
@@ -102,8 +110,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
         // Adjust frame for iOS 6.x version.
         if (!IS_IOS_7) {
             labelProductDescription.frame = CGRectMake(101, 6, 180, 32);
-            labelProductDescription.numberOfLines = 0;
-            labelProductDescription.minimumScaleFactor = 8.0/13.0;
+            labelProductDescription.font = [UIFont fontWithName:@"Helvetica" size:8.0f];
         }
         
         labelProductDescription.text = self.product.productDescription;
