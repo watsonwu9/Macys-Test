@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Update Info";
+    self.navigationItem.title = @"Update Product";
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ProductDetailBackgroundTexture"]];
     
     // Set up "Cancel" and "Save" buttons.
@@ -47,6 +47,18 @@
     self.textFieldProductName.text = self.product.productName;
     self.textFieldProductColors.text = [self.product.productColors componentsJoinedByString:@","];
     self.textViewProductDescription.text = self.product.productDescription;
+    
+    // Associate a tap gesture recognizer to the main view (for hiding keyboard).
+    UITapGestureRecognizer *tapGestureRecognizerHideKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:tapGestureRecognizerHideKeyboard];
+    
+    // Adjust frames for iOS 6.x version.
+    if (!IS_IOS_7) {
+        for (UIView *subview in self.view.subviews) {
+            CGRect frame = subview.frame;
+            subview.frame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame) - 64, CGRectGetWidth(frame), CGRectGetHeight(frame));
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,6 +106,10 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
     [self showPhotoMenu];
+}
+
+- (void)hideKeyboard {
+    [self.view endEditing:YES];
 }
 
 - (void)closeScreen {

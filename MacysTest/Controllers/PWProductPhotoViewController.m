@@ -24,16 +24,18 @@
     if (IPHONE4 || IPAD) {
         DLog(@"iphone 3.5-inch or on ipad");
         self.imageViewProductPhoto.frame = CGRectMake(0, 64, 320, 416);
+        // Adjust for iOS 6.x version.
+        if (!IS_IOS_7) {
+            self.imageViewProductPhoto.frame = CGRectMake(0, 10, 320, 416);
+        }
     }
     
     // Load the image into imageview.
     self.imageViewProductPhoto.image = self.product.productPhoto;
     self.imageViewProductPhoto.contentMode = UIViewContentModeScaleAspectFit;
     
-    UIBarButtonItem *barButtonItemFullScreen = [[UIBarButtonItem alloc] initWithTitle:@"Full Screen" style:UIBarButtonItemStylePlain target:self action:@selector(toggleFullScreen)];
-    self.navigationItem.rightBarButtonItem = barButtonItemFullScreen;
-    
-    [self.buttonExit addTarget:self action:@selector(toggleFullScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButtonItemAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMoreOptions)];
+    self.navigationItem.rightBarButtonItem = barButtonItemAction;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,27 +43,12 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Utilities
+#pragma mark - Private Methods
 
-- (void)toggleFullScreen {
-    if (self.navigationController.navigationBar.alpha == 0.0) {
-        // fade in navigation
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            [[UIApplication sharedApplication] setStatusBarHidden:FALSE withAnimation:UIStatusBarAnimationNone];
-            self.navigationController.navigationBar.alpha = 1.0;
-        } completion:^(BOOL finished) {
-        }];
-    }
-    else {
-        // fade out navigation
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            [[UIApplication sharedApplication] setStatusBarHidden:TRUE withAnimation:UIStatusBarAnimationFade];
-            self.navigationController.navigationBar.alpha = 0.0;
-        } completion:^(BOOL finished) {
-        }];
-    }
+- (void)showMoreOptions {
+    NSArray *activityItems = @[self.product.productPhoto];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end

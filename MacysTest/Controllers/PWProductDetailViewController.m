@@ -49,6 +49,11 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     [self.imageViewProductPhoto addGestureRecognizer:tapGestureRecognizer];
 
     self.labelProductName.text = self.product.productName;
+    CGRect frame = self.labelProductName.frame;
+    // Adjust frame for iOS 6.x frame
+    if (!IS_IOS_7) {
+        self.labelProductName.frame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame) - 30, CGRectGetWidth(frame), CGRectGetHeight(frame));
+    }
     
     self.tableViewProductDetails.delegate = self;
     self.tableViewProductDetails.dataSource = self;
@@ -93,6 +98,14 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     else if (indexPath.row == 2) {
         // "Description"
         UILabel *labelProductDescription = (UILabel *)[cell viewWithTag:PWCellLabelProductDescriptionTag];
+        
+        // Adjust frame for iOS 6.x version.
+        if (!IS_IOS_7) {
+            labelProductDescription.frame = CGRectMake(101, 6, 180, 32);
+            labelProductDescription.numberOfLines = 0;
+            labelProductDescription.minimumScaleFactor = 8.0/13.0;
+        }
+        
         labelProductDescription.text = self.product.productDescription;
     }
     else if (indexPath.row == 3) {
@@ -155,7 +168,8 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     for (UIView *view in viewsProductColors) {
         if ([viewsProductColors indexOfObject:view] < numberOfColors) {
             view.hidden = NO;
-            view.backgroundColor = [[self.product.productColors objectAtIndex:[viewsProductColors indexOfObject:view]] representedColor];
+            NSString *trimmedColorString = [[self.product.productColors objectAtIndex:[viewsProductColors indexOfObject:view]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            view.backgroundColor = [trimmedColorString representedColor];
         }
         else {
             view.hidden = YES;

@@ -19,6 +19,16 @@
 #define IPHONE5 [UIScreen mainScreen].bounds.size.height == 568
 #define IPHONE4 [UIScreen mainScreen].bounds.size.height == 480
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#define APP_VERSION_GREATER_THAN_OR_EQUAL_TO(v)     ([[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+#define IS_IOS_7 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
+
 #if DEBUG
 #define     DLog  NSLog
 #endif
