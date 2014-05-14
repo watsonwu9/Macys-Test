@@ -17,3 +17,10 @@ Used Third-Party Libraries:
 - MBProgressHUD: Indicate the status of finished work or work being done in a background thread.
 
 - UIImage+Tools: Handle image resizing and orientation fixing, for the photos taken through the camera.
+
+Selected Screenshots:
+
+![alt tag](https://www.dropbox.com/s/0trlq5veo34j2py/Photo-1.PNG?dl=1)
+![alt tag](https://www.dropbox.com/s/hrkejugte0o10fu/Photo-2.PNG?dl=1)
+![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-1.PNG)
+![alt tag](https://www.dropbox.com/s/f32kwl1uyrehq7r/Photo%204.PNG?dl=1)
