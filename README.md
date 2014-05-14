@@ -20,7 +20,8 @@ Used Third-Party Libraries:
 
 Selected Screenshots:
 
-![alt tag](https://www.dropbox.com/s/0trlq5veo34j2py/Photo-1.PNG?dl=1)
-![alt tag](https://www.dropbox.com/s/hrkejugte0o10fu/Photo-2.PNG?dl=1)
 ![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-1.PNG)
-![alt tag](https://www.dropbox.com/s/f32kwl1uyrehq7r/Photo%204.PNG?dl=1)
+![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-2.PNG)
+![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-3.PNG)
+![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-4.PNG)
+![ScreenShot](https://raw.github.com/geek-paulwong/Macys-Test/master/ScreenShots/Photo-5.PNG)
