@@ -20,6 +20,12 @@
     
     self.navigationItem.title = @"Photo";
     
+    // Adjust for iPhone 3.5-inch (iPhone4 or previous, but not iPhone5 or iPhone5S).
+    if (IPHONE4 || IPAD) {
+        DLog(@"iphone 3.5-inch or on ipad");
+        self.imageViewProductPhoto.frame = CGRectMake(0, 64, 320, 416);
+    }
+    
     // Load the image into imageview.
     self.imageViewProductPhoto.image = self.product.productPhoto;
     self.imageViewProductPhoto.contentMode = UIViewContentModeScaleAspectFit;

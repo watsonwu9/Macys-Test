@@ -126,12 +126,17 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
 #pragma mark - Utilities
 
 - (void)updateProductsAndTableView {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // Show "Loading..." HUD.
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading...";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Load "products" on background thread.
         self.products = [[PWSQLiteManager sharedInstance] fetchedProducts];
         
-        // Update tableview on main thread.
         dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES];
             [self.tableView reloadData];
         });
     });

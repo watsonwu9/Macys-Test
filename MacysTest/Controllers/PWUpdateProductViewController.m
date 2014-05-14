@@ -26,6 +26,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Update Info";
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ProductDetailBackgroundTexture"]];
     
     // Set up "Cancel" and "Save" buttons.
     UIBarButtonItem *barButtonItemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
@@ -61,6 +62,9 @@
 }
 
 - (void)save {
+    // Hide the keyboard.
+    [self.view endEditing:YES];
+    
     self.product.productPhoto = self.imageViewProductPhoto.image;
     self.product.productRegularPrice = [self.textFieldProductRegularPrice.text floatValue];
     self.product.productSalePrice = [self.textFieldProductSalePrice.text floatValue];
@@ -69,6 +73,7 @@
     self.product.productDescription = [self.textViewProductDescription.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     // self.product.productStores = ...
     
+    // Show "Updating..." HUD.
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Updating...";

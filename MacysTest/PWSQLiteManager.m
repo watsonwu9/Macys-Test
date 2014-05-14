@@ -54,6 +54,7 @@
     }
 }
 
+// CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
 - (BOOL)add:(Product *)product {
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
     [database open];
@@ -119,6 +120,7 @@
     return YES;
 }
 
+// CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
 - (NSMutableArray *)fetchedProducts {
     NSMutableArray *products = [[NSMutableArray alloc] init];
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
@@ -136,6 +138,7 @@
     return products;
 }
 
+// CREATE TABLE stores ( id INTEGER PRIMARY KEY, name TEXT)
 - (NSMutableArray *)fetchedStores:(NSArray *)storeIds {
     NSMutableArray *stores = [[NSMutableArray alloc] init];
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];

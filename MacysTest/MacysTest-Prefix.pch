@@ -15,6 +15,10 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+#define IPHONE5 [UIScreen mainScreen].bounds.size.height == 568
+#define IPHONE4 [UIScreen mainScreen].bounds.size.height == 480
+
 #if DEBUG
 #define     DLog  NSLog
 #endif

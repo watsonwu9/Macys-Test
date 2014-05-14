@@ -34,6 +34,11 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     // Set up the interface.
     self.navigationItem.title = @"Product";
     
+    // Add "Update" and "Delete" button to the right of navigation bar.
+    UIBarButtonItem *barButtonItemDelete = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteThisProduct)];
+    UIBarButtonItem *barButtonItemUpdate = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(updateThisProduct)];
+    self.navigationItem.rightBarButtonItems = @[barButtonItemDelete, barButtonItemUpdate];
+    
     self.scrollViewBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ProductDetailBackgroundTexture"]];
 
     self.imageViewProductPhoto.image = self.product.productPhoto;
@@ -48,10 +53,6 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     self.tableViewProductDetails.delegate = self;
     self.tableViewProductDetails.dataSource = self;
     self.tableViewProductDetails.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    
-    // Add a delete button to the right of navigation bar.
-    UIBarButtonItem *barButtonItemDelete = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteThisProduct)];
-    self.navigationItem.rightBarButtonItem = barButtonItemDelete;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +63,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,10 +99,6 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
         // "Available Stores"
         // No need to set up anything extra for this cell.
     }
-    else if (indexPath.row == 4) {
-        // "Update Product Info"
-        // No need to set up anything extra for this cell, too.
-    }
     
     return cell;
 }
@@ -113,15 +110,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     
     if (indexPath.row == 3) {
         // Show available stores if the user taps on this "Available Store" cell.
-        PWProductStoresViewController *productStoresViewController = [[PWProductStoresViewController alloc] initWithNibName:@"PWProductStoresViewController" bundle:nil];
-        productStoresViewController.storeIds = [[self.product.productStores objectForKey:@"available_store_id"] mutableCopy];
-        [self.navigationController pushViewController:productStoresViewController animated:YES];
-    }
-    else if (indexPath.row == 4) {
-        // Update Product Info.
-        PWUpdateProductViewController *updateProductViewController = [[PWUpdateProductViewController alloc] initWithNibName:@"PWUpdateProductViewController" bundle:nil];
-        updateProductViewController.product = self.product;
-        [self.navigationController pushViewController:updateProductViewController animated:YES];
+        [self showAvailableStores];
     }
 }
 
@@ -134,10 +123,22 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     [self.navigationController pushViewController:productPhotoViewController animated:YES];
 }
 
+- (void)updateThisProduct {
+    PWUpdateProductViewController *updateProductViewController = [[PWUpdateProductViewController alloc] initWithNibName:@"PWUpdateProductViewController" bundle:nil];
+    updateProductViewController.product = self.product;
+    [self.navigationController pushViewController:updateProductViewController animated:YES];
+}
+
 - (void)deleteThisProduct {
     // Show deletion confirmation first.
     UIActionSheet *actionSheetDeletionConfirmation = [[UIActionSheet alloc] initWithTitle:@"Are you sure to delete this product?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
     [actionSheetDeletionConfirmation showInView:self.view];
+}
+
+- (void)showAvailableStores {
+    PWProductStoresViewController *productStoresViewController = [[PWProductStoresViewController alloc] initWithNibName:@"PWProductStoresViewController" bundle:nil];
+    productStoresViewController.storeIds = [[self.product.productStores objectForKey:@"available_store_id"] mutableCopy];
+    [self.navigationController pushViewController:productStoresViewController animated:YES];
 }
 
 #pragma mark - Utilities
@@ -170,7 +171,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        // Delete this product.
+        // Delete this product. Yes, go ahead.
         if ([[PWSQLiteManager sharedInstance] remove:self.product]) {
             // Display "Deleted!" HUD.
             MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
