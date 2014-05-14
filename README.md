@@ -1,8 +1,8 @@
 My Approach and Design Decision:
 
-- I design two classes, PWSQLiteManager and PWPhotoManager, to specifically handle CRUD for products, and storage or deletion of related product photos. Thus, my codes become more compact and easier to read.
+- I design two classes, PWSQLiteManager and PWPhotoManager, to specifically handle CRUD operations for products, and storage or deletion of related product photos. Thus, my codes become more compact and easier to read.
 
-- Instead of storing photos as blob into the products table (this is generally a very bad design, of course), I choose to save them to the Documents directory and only their link into the products table.
+- Instead of storing photos as blob into the products table (this is generally a very bad design, of course), I choose to save them to the Documents directory and only their links into the products table.
 
 - In MacysDB.sql, I create two tables, one ("products") for storing products and the other ("stores") for providing mock data about available stores. Mock data using JSON for the Product model is contained in the MockData.json file.
 
