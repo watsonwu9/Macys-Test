@@ -56,12 +56,12 @@
  @params productDescription the description for the product.
  @params productRegularPrice the regular price for the product.
  @params productSalePrice the sale price for the product.
- @params productPhoto the related photo for the product.
+ @params productPhotoName the related photo name for the product, if it exists.
  @params productColors the available colors for the product.
  @params productStores the availbale stores for the product.
  @returns an instance of the Product.
  */
-- (id)initWithId:(NSInteger)productId andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
+- (id)initWithId:(NSInteger)productId andName:(NSString *)productName andDescription:(NSString *)productDescription andRegularPrice:(CGFloat)productRegularPrice andSalePrice:(CGFloat)productSalePrice  andPhotoName:(NSString *)productPhotoName andColors:(NSArray *)productColors andStores:(NSDictionary *)productStores;
 
 /**
  @returns the related photo path for the product.

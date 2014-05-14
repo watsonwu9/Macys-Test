@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ProductDetailBackgroundTexture.png"
+      "filename" : "BackgroundTexture.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ProductDetailBackgroundTexture@2x.png"
+      "filename" : "BackgroundTexture@2x.png"
     }
   ],
   "info" : {

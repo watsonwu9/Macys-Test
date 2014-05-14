@@ -22,8 +22,6 @@ static const NSInteger PWCellLabelStoreNameTag = 1000;
 {
     [super viewDidLoad];
     
-    self.stores = [[NSMutableArray alloc] init];
-    
     self.navigationItem.title = @"Available Stores";
     
     // Register the tableview cell.
@@ -31,6 +29,7 @@ static const NSInteger PWCellLabelStoreNameTag = 1000;
     [self.tableView registerNib:nib forCellReuseIdentifier:@"TableViewCellStore"];
     
     // Load stores in accordance with the storeIds.
+    self.stores = [[NSMutableArray alloc] init];
     [self updateStoresAndTableView];
 }
 

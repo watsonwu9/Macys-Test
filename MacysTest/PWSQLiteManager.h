@@ -66,9 +66,9 @@
  
  CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
  
- @returns all the stored products.
+ @returns a list of all products in the database.
  */
-- (NSMutableArray *)fetchedProducts;
+- (NSMutableArray *)fetchedAllProducts;
 
 /**
  SELECT * from the stores table.
@@ -81,5 +81,16 @@
  @returns the corresponding set of stores.
  */
 - (NSMutableArray *)fetchedStores:(NSArray *)storeIds;
+
+/**
+ SELECT * from the stores table.
+ 
+ Schema of the stores table in MacysDB.sql:
+ 
+ CREATE TABLE stores ( id INTEGER PRIMARY KEY, name TEXT)
+ 
+ @returns a list of all stores in the database.
+ */
+- (NSMutableArray *)fetchedAllStores;
 
 @end

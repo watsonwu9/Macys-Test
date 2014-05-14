@@ -10,7 +10,7 @@ My Approach and Design Decision:
 
 Used Third-Party Libraries:
 
-- FMDB: Enable SQLite robust query and other command executions.
+- FMDB: Enable robust SQLite INSERT, SELECT, DELETE and UPDATE operations.
 
 - NSString+Color: Convert semantic strings (e.g. "red" or "yellow") into UIColor.
 

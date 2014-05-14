@@ -39,7 +39,7 @@ static const CGFloat PWDeleteProductHUDDuration = 0.6f;
     UIBarButtonItem *barButtonItemUpdate = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(updateThisProduct)];
     self.navigationItem.rightBarButtonItems = @[barButtonItemDelete, barButtonItemUpdate];
     
-    self.scrollViewBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ProductDetailBackgroundTexture"]];
+    self.scrollViewBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundTexture"]];
 
     self.imageViewProductPhoto.image = self.product.productPhoto;
     self.imageViewProductPhoto.contentMode = UIViewContentModeScaleAspectFit;

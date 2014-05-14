@@ -133,7 +133,7 @@ static const NSInteger PWCellLabelProductSalePriceTag = 4000;
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Load "products" on background thread.
-        self.products = [[PWSQLiteManager sharedInstance] fetchedProducts];
+        self.products = [[PWSQLiteManager sharedInstance] fetchedAllProducts];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];

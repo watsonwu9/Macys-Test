@@ -63,7 +63,7 @@
     NSInteger newProductId = [Product nextId];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filename = [NSString stringWithFormat:@"Photo%d.png", newProductId];
+    NSString *filename = [NSString stringWithFormat:@"Photo%ld.png", (long)newProductId];
     NSString *photoPathName = [documentsDirectory stringByAppendingPathComponent:filename];
     
     // Save store_id combined string into the column "stores" of the products table
@@ -121,7 +121,7 @@
 }
 
 // CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT, description TEXT, regular_price REAL, sale_price REAL, product_photo VARCHAR(255), colors TEXT, stores TEXT )
-- (NSMutableArray *)fetchedProducts {
+- (NSMutableArray *)fetchedAllProducts {
     NSMutableArray *products = [[NSMutableArray alloc] init];
     FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
     [database open];
@@ -132,7 +132,7 @@
         NSString *storeIdsString = [results stringForColumn:@"stores"];
         NSDictionary *productStores = @{@"available_store_id" : [storeIdsString componentsSeparatedByString:@","]};
         
-        Product *product = [[Product alloc] initWithId:[results intForColumn:@"id"] andName:[results stringForColumn:@"name"] andDescription:[results stringForColumn:@"description"] andRegularPrice:[results doubleForColumn:@"regular_price"] andSalePrice:[results doubleForColumn:@"sale_price"] andColors:[[results stringForColumn:@"colors"] componentsSeparatedByString:@","] andStores:productStores];
+        Product *product = [[Product alloc] initWithId:[results intForColumn:@"id"] andName:[results stringForColumn:@"name"] andDescription:[results stringForColumn:@"description"] andRegularPrice:[results doubleForColumn:@"regular_price"] andSalePrice:[results doubleForColumn:@"sale_price"] andPhotoName:nil andColors:[[results stringForColumn:@"colors"] componentsSeparatedByString:@","] andStores:productStores];
         [products addObject:product];
     }
     return products;
@@ -145,6 +145,18 @@
     [database open];
     NSString *queryString = [NSString stringWithFormat:@"SELECT * FROM stores WHERE id in (%@)", [storeIds componentsJoinedByString:@","]];
     FMResultSet *results = [database executeQuery:queryString];
+    while ([results next]) {
+        Store *store = [[Store alloc] initWithId:[results intForColumn:@"id"] andName:[results stringForColumn:@"name"]];
+        [stores addObject:store];
+    }
+    return stores;
+}
+
+- (NSMutableArray *)fetchedAllStores {
+    NSMutableArray *stores = [[NSMutableArray alloc] init];
+    FMDatabase *database = [FMDatabase databaseWithPath:self.databasePath];
+    [database open];
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM stores"];
     while ([results next]) {
         Store *store = [[Store alloc] initWithId:[results intForColumn:@"id"] andName:[results stringForColumn:@"name"]];
         [stores addObject:store];

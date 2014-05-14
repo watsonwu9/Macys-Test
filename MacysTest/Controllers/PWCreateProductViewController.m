@@ -157,10 +157,11 @@ static const CGFloat PWCreateProductHUDDuration = 0.6f;
             NSString *productDescription = [productInfo objectForKey:@"description"];
             CGFloat productRegularPrice = [[productInfo objectForKey:@"regular_price"] floatValue];
             CGFloat productSalePrice = [[productInfo objectForKey:@"sale_price"] floatValue];
+            NSString *productPhotoName = [productInfo objectForKey:@"product_photo"];
             NSArray *productColors = [productInfo objectForKey:@"colors"];
             NSDictionary *productStores = [productInfo objectForKey:@"stores"];
             
-            Product *product = [[Product alloc] initWithId:productId andName:productName andDescription:productDescription andRegularPrice:productRegularPrice andSalePrice:productSalePrice andColors:productColors andStores:productStores];
+            Product *product = [[Product alloc] initWithId:productId andName:productName andDescription:productDescription andRegularPrice:productRegularPrice andSalePrice:productSalePrice andPhotoName:productPhotoName andColors:productColors andStores:productStores];
             [self.mockProducts addObject:product];
         }
     }

@@ -10,6 +10,7 @@
 #import "Product.h"
 #import "PWSQLiteManager.h"
 #import "MBProgressHUD.h"
+#import "PWAllStoresViewController.h"
 
 @interface PWUpdateProductViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
